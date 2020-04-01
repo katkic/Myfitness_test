@@ -26,6 +26,7 @@
           <td><%= body_status.body_weight %></td>
           <td><%= body_status.body_fat %></td>
           <td><%= link_to '編集', edit_body_status_path(body_status), class: 'btn-sm btn-success text-white' %></td>
+          <td><%= link_to '削除', body_status_path(body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn-sm btn-danger text-white' %></td>
         </tr>
       <% end %>
     </tbody>

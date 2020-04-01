@@ -23,5 +23,6 @@
     </tr>
   </table><!-- /.table table-hover -->
 
-  <%= link_to '編集', edit_body_status_path(@body_status), class: 'btn btn-primary text-white' %>
+  <%= link_to '編集', edit_body_status_path(@body_status), class: 'btn btn-success text-white' %>
+  <%= link_to '削除', body_status_path(@body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn btn-danger text-white' %>
 </div><!-- /.container -->

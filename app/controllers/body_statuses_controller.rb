@@ -1,5 +1,5 @@
 class BodyStatusesController < ApplicationController
-  before_action :set_body_status, only: %i[show edit update]
+  before_action :set_body_status, only: %i[show edit update destroy]
 
   def index
     @body_statuses = BodyStatus.where(user_id: current_user.id).order(created_at: :desc)
@@ -29,6 +29,11 @@ class BodyStatusesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @body_status.destroy
+    redirect_to body_statuses_path, notice: "体重・体脂肪「#{@body_status.created_at.strftime("%Y-%m-%d %H:%M")}を削除しました」"
   end
 
   private
