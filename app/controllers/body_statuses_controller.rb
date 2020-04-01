@@ -1,5 +1,5 @@
 class BodyStatusesController < ApplicationController
-  before_action :set_body_status, only: [:show]
+  before_action :set_body_status, only: %i[show edit update]
 
   def index
     @body_statuses = BodyStatus.where(user_id: current_user.id).order(created_at: :desc)
@@ -21,13 +21,24 @@ class BodyStatusesController < ApplicationController
     end
   end
 
-  def edit
+  def edit;end
+
+  def update
+    if @body_status.update(body_status_params)
+      redirect_to body_status_path(@body_status), notice: "体重・体脂肪「#{@body_status.created_at.strftime("%Y-%m-%d %H:%M")}」を更新しました"
+    else
+      render :edit
+    end
   end
 
   private
 
   def body_status_params
-    params.require(:body_status).permit(:body_weight, :body_fat)
+    params.require(:body_status).permit(
+      :created_at,
+      :body_weight,
+      :body_fat,
+    )
   end
 
   def set_body_status

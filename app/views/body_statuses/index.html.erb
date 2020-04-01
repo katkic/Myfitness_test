@@ -15,6 +15,7 @@
         <th>日付</th>
         <th>体重</th>
         <th>体脂肪</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -24,6 +25,7 @@
           <td><%= link_to body_status.created_at.strftime("%Y-%m-%d %H:%M"), body_status_path(body_status) %></td>
           <td><%= body_status.body_weight %></td>
           <td><%= body_status.body_fat %></td>
+          <td><%= link_to '編集', edit_body_status_path(body_status), class: 'btn-sm btn-success text-white' %></td>
         </tr>
       <% end %>
     </tbody>
