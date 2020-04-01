@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      body_status: 体重・体脂肪
+    attributes:
+      body_status:
+        id: ID
+        body_weight: 体重
+        body_fat: 体脂肪
+        picture1: 写真１
+        picture2: 写真２
+        picture3: 写真３

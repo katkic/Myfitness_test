@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="my-3">
+    <h1>体重・体脂肪</h1>
+  </div><!-- /.page_title -->
+
+  <nav class="navbar navbar-expand-sm my-3">
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to '新規作成', new_body_status_path(@body_status), class: 'btn btn-primary text-white' %></li>
+    </ul>
+  </nav>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>体重</th>
+        <th>体脂肪</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @body_statuses.each do |body_status| %>
+        <tr>
+          <td><%= link_to body_status.created_at.strftime("%Y-%m-%d %H:%M"), body_status_path(body_status) %></td>
+          <td><%= body_status.body_weight %></td>
+          <td><%= body_status.body_fat %></td>
+          <td><%= link_to '編集', edit_body_status_path(body_status), class: 'btn-sm btn-success text-white' %></td>
+          <td><%= link_to '削除', body_status_path(body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn-sm btn-danger text-white' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table><!-- /.table table-hover -->
+</div><!-- /.container -->
