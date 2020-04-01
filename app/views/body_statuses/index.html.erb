@@ -3,6 +3,12 @@
     <h1>体重・体脂肪</h1>
   </div><!-- /.page_title -->
 
+  <nav class="navbar navbar-expand-sm my-3">
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to '新規作成', new_body_status_path(@body_status), class: 'btn btn-primary text-white' %></li>
+    </ul>
+  </nav>
+
   <table class="table table-hover">
     <thead>
       <tr>

@@ -8,12 +8,27 @@ class BodyStatusesController < ApplicationController
   def show;end
 
   def new
+    @body_status = BodyStatus.new
+  end
+
+  def create
+    @body_status = current_user.body_statuses.build(body_status_params)
+
+    if @body_status.save
+      redirect_to body_status_path(@body_status), notice: "体重・体脂肪「#{@body_status.created_at.strftime("%Y-%m-%d %H:%M")}」を記録しました"
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   private
+
+  def body_status_params
+    params.require(:body_status).permit(:body_weight, :body_fat)
+  end
 
   def set_body_status
     @body_status = BodyStatus.find(params[:id])
