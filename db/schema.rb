@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_141323) do
+ActiveRecord::Schema.define(version: 2020_04_01_053049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "body_statuses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.float "body_weight", null: false
+    t.float "body_fat"
+    t.string "picture1"
+    t.string "picture2"
+    t.string "picture3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_body_statuses_on_user_id"
+  end
 
   create_table "exercise_logs", force: :cascade do |t|
     t.bigint "workout_id", null: false
@@ -90,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_03_29_141323) do
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "body_statuses", "users"
   add_foreign_key "exercise_logs", "workouts"
   add_foreign_key "menu_relationships", "exercises"
   add_foreign_key "menu_relationships", "menus"

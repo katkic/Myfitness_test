@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  body_weight: 1.5
+  body_fat: 1.5
+  picture1: MyString
+  picture2: MyString
+  picture3: MyString
+
+two:
+  user: two
+  body_weight: 1.5
+  body_fat: 1.5
+  picture1: MyString
+  picture2: MyString
+  picture3: MyString

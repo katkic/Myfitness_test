@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :exercises
   resources :menus
   resources :workouts
+  resources :body_statuses
 end
