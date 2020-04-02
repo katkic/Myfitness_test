@@ -1,0 +1,58 @@
+.calendar_exerdise_names {
+  font-size: 10px;
+  background-color: cornflowerblue;
+  border-radius: 5px;
+  margin-bottom: 4px;
+  padding-left: 5px;
+  color: #fff;
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #fff;
+  }
+}
+
+.simple-calendar {
+  .day {
+    height: 150px;
+  }
+
+  .wday-0 {
+    color: red;
+  }
+
+  .wday-1 {}
+
+  .wday-2 {}
+
+  .wday-3 {}
+
+  .wday-4 {}
+
+  .wday-5 {}
+
+  .wday-6 {
+    color: blue;
+  }
+
+  .today {}
+
+  .past {}
+
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+    background-color: #fff2db;
+  }
+
+  .next-month {
+    background-color: #fff2db;
+  }
+
+  .current-month {}
+
+  .has-events {}
+}

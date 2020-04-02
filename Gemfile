@@ -45,6 +45,7 @@ gem "nested_form"
 gem 'enum_help'
 gem 'ransack'
 gem 'chartkick'
+gem 'simple_calendar', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
