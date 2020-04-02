@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :menus
   resources :workouts
   resources :body_statuses
+  resource  :chart, only: [:show]
 end
