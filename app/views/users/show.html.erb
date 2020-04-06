@@ -17,5 +17,6 @@
     <div class="posts">
     </div><!-- /.posts -->
   </div><!-- /.content -->
-  <%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete %>
+  <%= render 'partial/follow_form', user: @user unless @user.id == current_user.id %>
+  <%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-danger text-white', method: :delete %>
 </div><!-- /.container -->

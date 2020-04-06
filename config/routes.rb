@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :body_statuses
   resource  :chart, only: [:show]
   resource  :calendar, only: [:show]
+  resources :relationships, only: %i[create destroy]
 end
