@@ -18,5 +18,9 @@
     </div><!-- /.posts -->
   </div><!-- /.content -->
   <%= render 'partial/follow_form', user: @user unless @user.id == current_user.id %>
+  <div>
+    <%= link_to content_tag(:p, "#{@following_count} フォロー中"), relationships_path(user_id: @user.id, flag: 'following') %>
+    <%= link_to content_tag(:p, "#{@followers_count} フォロワー"), relationships_path(user_id: @user.id, flag: 'followers') %>
+  </div>
   <%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-danger text-white', method: :delete %>
 </div><!-- /.container -->

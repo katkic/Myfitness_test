@@ -1,0 +1,35 @@
+.follow-header-area {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.follow-content {
+  width: 500px;
+  margin: 0 auto;
+
+  .follow-nav {
+    text-align: center;
+    display: flex;
+    justify-content:space-around;
+
+    .follow-title {
+      width: 50%;
+      font-size: 18px;
+      padding: 10px 20px;
+    }
+
+    .selected {
+      border-bottom: 2px solid #3e3e3e;
+    }
+  }
+
+  .follow-item {
+    border-top: 1px solid #ababab;
+    height: 50px;
+  }
+
+  .follow-name {
+    font-size: 18px;
+  }
+}
+

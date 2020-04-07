@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="follow-header-area">
+    <h1 class="mb-2"><%= link_to @user.name, user_path(@user) %></h1>
+  </div>
+
+  <div class="follow-content">
+    <% if @flag == 'following' %>
+      <div class="follow-nav">
+        <h2 class="follow-title selected">フォロー中</h2>
+        <h2 class="follow-title"><%= link_to 'フォロワー', relationships_path(user_id: @user.id, flag: 'followers') %></h2>
+      </div>
+      <ul>
+        <% @following.each do |follow| %>
+        <div class="follow-item">
+          <h3 class="follow-name"><%= link_to follow.name, user_path(follow) %></h3>
+          </div><!-- /.follow-item -->
+        <% end %>
+      </ul>
+    <% elsif @flag == 'followers'%>
+        <div class="follow-nav">
+        <h2 class="follow-title"><%= link_to 'フォロー中', relationships_path(user_id: @user.id, flag: 'following') %></h2>
+        <h2 class="follow-title selected">フォロワー</h2>
+      </div>
+      <ul>
+        <% @followers.each do |follower| %>
+        <div class="follow-item">
+          <h3 class="follow-name"><%= link_to follower.name, user_path(follower) %></h3>
+          </div><!-- /.follow-item -->
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= link_to '戻る', :back, class: 'nav-link btn btn-default' %>
+  </div><!-- /.followcontent -->
+</div><!-- /.container -->

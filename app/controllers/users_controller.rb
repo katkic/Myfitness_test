@@ -5,7 +5,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show;end
+  def show
+    @following_count = @user.following.count
+    @followers_count = @user.followers.count
+  end
 
   private
 
