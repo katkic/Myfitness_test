@@ -25,10 +25,11 @@
 
     .content-header {
       display: flex;
-      align-items: center;
+      align-items: stretch;
 
       .post-names {
         margin-left: 15px;
+        flex-basis: 70%;
 
         .post-user {
           font-size: 18px;
@@ -44,18 +45,14 @@
     .content-body {
       margin-top: 10px;
       border: none;
+
+      .post-content {
+        white-space: pre-wrap;
+      }
     }
 
     .content-footer {
       margin-top: 10px;
-
-      .fa-1_5x {
-        font-size: 1.5em;
-      }
-
-      .fa-1_8x {
-        font-size: 1.8em;
-      }
 
       .favorite-icon {
         color: red;
