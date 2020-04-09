@@ -1,0 +1,40 @@
+<div class="post-container mt-3">
+  <div class="page-title">
+    <h1>投稿を作成</h1>
+  </div><!-- /.page-title -->
+
+  <%= form_with model: @post, local: true do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, '') %> 件のエラーがあります</h2>
+
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div><!-- /#error_explanation -->
+    <% end %>
+
+    <div class="main-content">
+      <div class="form-group">
+        <div class="time-area">
+          <%= Time.new.strftime('%Y-%m-%d') %>
+        </div><!-- /.time-area -->
+
+        <div class="content-header">
+          <p cl><%= image_tag 'default.png', class: 'cover50' %></p>
+          <div class="post-names">
+            <p class="post-user"><%= current_user.name %></p>
+          </div><!-- /.post-names -->
+        </div><!-- /.content-header -->
+        <%= f.text_area :content, class: 'form-control content-body', size: '0x7', placeholder: '今日の出来事' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.new-content -->
+
+    <div class="nav-menu">
+      <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
+      <%= f.submit '投稿する', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div><!-- /.container -->

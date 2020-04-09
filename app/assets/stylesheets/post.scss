@@ -9,29 +9,41 @@
   .nav-menu {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
   }
 
   .main-content {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+
+    .time-area {
+      margin-bottom: 10px;
+    }
 
     .content-header {
       display: flex;
+      align-items: center;
 
-      .post-user {
-        font-size: 18px;
-        font-weight: bold;
-      }
+      .post-names {
+        margin-left: 15px;
 
-      .post-time {
-        font-size: 12px;
+        .post-user {
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        .post-time {
+          font-size: 12px;
+        }
       }
     }
 
     .content-body {
       margin-top: 10px;
+      border: none;
     }
 
     .content-footer {
@@ -53,6 +65,5 @@
         margin-left: 10px;
       }
     }
-
   }
 }
