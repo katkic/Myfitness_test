@@ -1,0 +1,37 @@
+<div class="main-content">
+        <div class="content-header">
+          <p><%= image_tag 'default.png', alt: current_user.name, class: 'cover50' %></p>
+          <div class="post-names">
+            <p class="post-user"><%= post.user.name %></p>
+            <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+          </div>
+          <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x mr-3'), post_path(post) %>
+
+          <% if post.user.id == current_user.id %>
+            <div class="post-icons">
+              <%= link_to content_tag(:i, '', class: 'fas fa-edit fa-1_5x fa-fw'), edit_post_path(post) %>
+            </div><!-- /.post-icons -->
+          <% end %>
+        </div><!-- /.content-header -->
+
+        <div class="content-body">
+          <p class="post-content"><%= post.content %></p>
+        </div><!-- /.content-body -->
+
+        <div class="content-footer">
+          <div class="post-icon">
+            <% unless @favorite %>
+              <%# お気に入り登録 %>
+              <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw') %>
+              <span>23</span>
+            <% else %>
+              <%# お気に入り解除 %>
+              <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw comment favorite-icon'), '#' %>
+              <span>23</span>
+            <% end %>
+
+            <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment') %>
+            <span>10</span>
+          </div><!-- /.post-icon -->
+        </div><!-- /.content-footer -->
+      </div><!-- /.main-container -->
