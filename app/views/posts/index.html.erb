@@ -1,0 +1,45 @@
+<div class="post-container mt-3">
+  <h1 class="page-title mb-3">投稿一覧</h1>
+  <% if @posts.empty? %>
+    <p class="mb-2">投稿はありません</p>
+    <%= link_to '新規作成', new_post_path, class: 'btn btn-primary text-white' %>
+  <% else %>
+    <div class="nav-menu">
+      <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
+      <%= link_to '新規作成', new_post_path, class: 'btn btn-primary text-white' %>
+    </div><!-- /.nav-menu -->
+
+    <% @posts.each do |post| %>
+      <div class="main-content">
+        <div class="content-header">
+          <p><%= image_tag 'default.png', alt: current_user.name, class: 'cover50' %></p>
+          <div class="post-names">
+            <p class="post-user"><%= post.user.name %></p>
+            <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+          </div>
+        </div><!-- /.content-header -->
+
+        <div class="content-body">
+          <p><%= post.content %></p>
+        </div><!-- /.content-body -->
+
+        <div class="content-footer">
+          <div class="post-icon">
+            <% unless @favorite %>
+              <%# お気に入り登録 %>
+              <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw') %>
+              <span>23</span>
+            <% else %>
+              <%# お気に入り解除 %>
+              <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw comment favorite-icon'), '#' %>
+              <span>23</span>
+            <% end %>
+
+            <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment') %>
+            <span>10</span>
+          </div><!-- /.post-icon -->
+        </div><!-- /.content-footer -->
+      </div><!-- /.main-container -->
+    <% end %>
+  <% end %>
+</div><!-- /.container -->
