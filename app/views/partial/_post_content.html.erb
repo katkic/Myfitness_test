@@ -5,11 +5,15 @@
             <p class="post-user"><%= post.user.name %></p>
             <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
           </div>
-          <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x mr-3'), post_path(post) %>
+          <!-- 詳細表示リンク -->
+          <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2'), post_path(post) %>
 
           <% if post.user.id == current_user.id %>
             <div class="post-icons">
+              <!-- 編集リンク -->
               <%= link_to content_tag(:i, '', class: 'fas fa-edit fa-1_5x fa-fw'), edit_post_path(post) %>
+              <!-- 削除リンク -->
+              <%= link_to content_tag(:i, '', class: 'fas fa-trash-alt fa-1_5x fa-fw'), post_path(post), method: :delete, data: { confirm: '投稿を削除してもよろしいですか？ '} %>
             </div><!-- /.post-icons -->
           <% end %>
         </div><!-- /.content-header -->
