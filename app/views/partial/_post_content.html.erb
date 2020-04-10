@@ -33,7 +33,7 @@
       <% else %>
         <!-- いいね登録 -->
         <div class="post-item">
-          <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw'), likes_path(post) %>
+          <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw'), likes_path(post_id: post.id), method: :post %>
           <%= post.like_users.count if post.like_users.count > 0 %>
         </div><!-- /.post-item -->
       <% end %>
