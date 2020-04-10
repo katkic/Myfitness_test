@@ -9,6 +9,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-
+    like = current_user.likes.find_by(id: params[:id]).destroy
+    redirect_to posts_path, notice: "#{like.post.user.name}さんの投稿をいいね解除しました"
   end
 end

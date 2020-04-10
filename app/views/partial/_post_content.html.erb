@@ -24,10 +24,10 @@
 
   <div class="content-footer">
     <div class="post-icons">
-      <% if current_user.likes.find_by(post_id: post.id) %>
+      <% if @like.present? %>
         <!-- いいね解除 -->
         <div class="post-item">
-          <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw favorite-icon'), '#' %>
+          <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw favorite-icon'), like_path(id: @like.id), method: :delete %>
           <%= post.like_users.count if post.like_users.count > 0 %>
         </div><!-- /.post-icon -->
       <% else %>
