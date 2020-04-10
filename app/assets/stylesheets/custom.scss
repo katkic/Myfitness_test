@@ -43,6 +43,11 @@ select {
   outline: none;
 }
 
+#error_explanation {
+  color: red;
+  margin-top: 20px;
+}
+
 // 画像のリサイズ -------------------
 .cover40 {
   object-fit: cover;
