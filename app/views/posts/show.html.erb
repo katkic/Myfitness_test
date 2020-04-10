@@ -6,4 +6,8 @@
   </div><!-- /.nav-menu -->
 
   <%= render 'partial/post_content', post: @post %>
+
+  <div class="like-count">
+    <%= link_to "#{@post.like_users.count}件のいいね", likes_path(id: @post.id) %>
+  </div><!-- /.like-count -->
 </div><!-- /.post-container -->

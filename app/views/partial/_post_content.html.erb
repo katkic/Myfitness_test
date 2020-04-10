@@ -1,41 +1,45 @@
 <div class="main-content">
-        <div class="content-header">
-          <p><%= image_tag 'default.png', alt: current_user.name, class: 'cover50' %></p>
-          <div class="post-names">
-            <p class="post-user"><%= post.user.name %></p>
-            <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
-          </div>
-          <!-- 詳細表示リンク -->
-          <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2'), post_path(post) %>
+  <div class="content-header">
+    <p><%= image_tag 'default.png', alt: post.user.name, class: 'cover50' %></p>
+    <div class="post-names">
+      <p class="post-user"><%= post.user.name %></p>
+      <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+    </div>
+    <!-- 詳細表示リンク -->
+    <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2'), post_path(post) %>
 
-          <% if post.user.id == current_user.id %>
-            <div class="post-icons">
-              <!-- 編集リンク -->
-              <%= link_to content_tag(:i, '', class: 'fas fa-edit fa-1_5x fa-fw'), edit_post_path(post) %>
-              <!-- 削除リンク -->
-              <%= link_to content_tag(:i, '', class: 'fas fa-trash-alt fa-1_5x fa-fw'), post_path(post), method: :delete, data: { confirm: '投稿を削除してもよろしいですか？ '} %>
-            </div><!-- /.post-icons -->
-          <% end %>
-        </div><!-- /.content-header -->
+    <% if post.user.id == current_user.id %>
+      <div class="post-icons">
+        <!-- 編集リンク -->
+        <%= link_to content_tag(:i, '', class: 'fas fa-edit fa-1_5x fa-fw'), edit_post_path(post) %>
+        <!-- 削除リンク -->
+        <%= link_to content_tag(:i, '', class: 'fas fa-trash-alt fa-1_5x fa-fw'), post_path(post), method: :delete, data: { confirm: '投稿を削除してもよろしいですか？ '} %>
+      </div><!-- /.post-icons -->
+    <% end %>
+  </div><!-- /.content-header -->
 
-        <div class="content-body">
-          <p class="post-content"><%= post.content %></p>
-        </div><!-- /.content-body -->
+  <div class="content-body">
+    <p class="post-content"><%= post.content %></p>
+  </div><!-- /.content-body -->
 
-        <div class="content-footer">
-          <div class="post-icon">
-            <% unless @favorite %>
-              <%# お気に入り登録 %>
-              <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw') %>
-              <span>23</span>
-            <% else %>
-              <%# お気に入り解除 %>
-              <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw comment favorite-icon'), '#' %>
-              <span>23</span>
-            <% end %>
+  <div class="content-footer">
+    <div class="post-icons">
+      <% if current_user.likes.find_by(post_id: post.id) %>
+        <!-- いいね解除 -->
+        <div class="post-item">
+          <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw favorite-icon'), '#' %>
+          <%= post.like_users.count if post.like_users.count > 0 %>
+        </div><!-- /.post-icon -->
+      <% else %>
+        <!-- いいね登録 -->
+        <div class="post-item">
+          <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw'), likes_path(post) %>
+          <%= post.like_users.count if post.like_users.count > 0 %>
+        </div><!-- /.post-item -->
+      <% end %>
 
-            <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment') %>
-            <span>10</span>
-          </div><!-- /.post-icon -->
-        </div><!-- /.content-footer -->
-      </div><!-- /.main-container -->
+      <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment'), '#' %>
+      <span>10</span>
+    </div><!-- /.post-icon -->
+  </div><!-- /.content-footer -->
+</div><!-- /.main-content -->

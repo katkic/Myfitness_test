@@ -54,6 +54,14 @@
     .content-footer {
       margin-top: 10px;
 
+      .post-icons {
+        display: flex;
+
+        .post-item {
+          flex-basis: 120px;
+        }
+      }
+
       .favorite-icon {
         color: red;
       }
