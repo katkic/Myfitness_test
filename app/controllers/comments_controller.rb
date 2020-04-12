@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: %i[new edit update]
-  before_action :set_comment, only: %i[edit update]
+  before_action :set_post, only: %i[new edit create update destroy]
+  before_action :set_comment, only: %i[edit update destroy]
 
   def index
     @comment_users = Post.find(params[:post_id]).comment_users.distinct
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     @post = @comment.post
 
     if @comment.save
-      redirect_to post_path(@comment.post)
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -27,10 +27,15 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to post_path(@comment.post), notice: "「#{@comment.user.name} #{@comment.created_at.strftime('%Y-%m-%d %H:%M')}」のコメントを編集しました"
+      redirect_to post_path(@post), notice: "「#{@comment.user.name} #{@comment.created_at.strftime('%Y-%m-%d %H:%M')}」のコメントを編集しました"
     else
       render :edit
     end
+  end
+
+  def destroy
+    @comment.destroy
+    redirect_to post_path(@post), notice: "「#{@comment.user.name} #{@comment.created_at.strftime('%Y-%m-%d %H:%M')}」のコメントを削除しました"
   end
 
   private

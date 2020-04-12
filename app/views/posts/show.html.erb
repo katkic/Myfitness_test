@@ -31,7 +31,7 @@
               <!-- 編集リンク -->
               <%= link_to content_tag(:i, '', class: 'fas fa-edit fa-1_5x fa-fw'), [:edit, @post, comment] %>
               <!-- 削除リンク -->
-              <%= link_to content_tag(:i, '', class: 'fas fa-trash-alt fa-1_5x fa-fw'), '#', method: :delete, data: { confirm: '投稿を削除してもよろしいですか？ '} %>
+              <%= link_to content_tag(:i, '', class: 'fas fa-trash-alt fa-1_5x fa-fw'), [@post, comment], method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？ '} %>
             </div><!-- /.post-icons -->
           <% end %>
 
