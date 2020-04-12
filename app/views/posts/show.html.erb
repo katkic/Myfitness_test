@@ -1,0 +1,45 @@
+<div class="post-container mt-3">
+  <h1 class="page-title mb-3">投稿詳細</h1>
+  <div class="nav-menu">
+    <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
+  </div><!-- /.nav-menu -->
+
+  <%= render 'partial/post_content', post: @post %>
+
+  <div class="post-icons">
+    <div class="post-item">
+      <%= link_to "#{@post.like_users.count}件のいいね", likes_path(id: @post.id) if @post.like_users.count > 0 %>
+    </div><!-- /.post-item -->
+    <div class="post-item">
+      <%= link_to "#{@post.comment_users.count}件のコメント", [@post, :comments] if @post.comment_users.count > 0 %>
+    </div><!-- /.post-item -->
+  </div><!-- /.post-icons -->
+
+  <div class="comments-container mt-5">
+    <%= link_to 'コメント投稿', [:new, @post, :comment], class: 'btn btn-primary text-white mb-2' %>
+    <% @comments.each do |comment| %>
+      <div class="post-comment">
+        <div class="content-header">
+          <p><%= image_tag 'default.png', alt: comment.user.name, class: 'cover50' %></p>
+          <div class="post-names">
+            <p class="post-user"><%= comment.user.name %></p>
+            <p class="post-time"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+          </div>
+
+          <% if comment.user.id == current_user.id %>
+            <div class="post-icons">
+              <!-- 編集リンク -->
+              <%= link_to content_tag(:i, '', class: 'fas fa-edit fa-1_5x fa-fw'), [:edit, @post, comment] %>
+              <!-- 削除リンク -->
+              <%= link_to content_tag(:i, '', class: 'fas fa-trash-alt fa-1_5x fa-fw'), [@post, comment], method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？ '} %>
+            </div><!-- /.post-icons -->
+          <% end %>
+
+        </div><!-- /.content-header -->
+
+        <!-- 投稿へのコメント -->
+        <div class="comment-content"><%= comment.content %></div><!-- /.comment-content -->
+      </div><!-- /.post-comments -->
+    <% end %>
+  </div><!-- /.comments-container -->
+</div><!-- /.post-container -->

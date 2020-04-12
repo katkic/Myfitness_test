@@ -43,6 +43,11 @@ select {
   outline: none;
 }
 
+#error_explanation {
+  color: red;
+  margin-top: 20px;
+}
+
 // 画像のリサイズ -------------------
 .cover40 {
   object-fit: cover;
@@ -69,6 +74,15 @@ select {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 50%;
+}
+
+// Font Awesomeアイコンのサイズ変更
+.fa-1_5x {
+  font-size: 1.5em;
+}
+
+.fa-1_8x {
+  font-size: 1.8em;
 }
 
 // header

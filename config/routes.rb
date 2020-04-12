@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resource  :chart, only: [:show]
   resource  :calendar, only: [:show]
   resources :relationships, only: %i[index create destroy]
+  resources :posts do
+    resources :comments, except: :show
+  end
+  resources :likes, only: %i[index create destroy]
 end
