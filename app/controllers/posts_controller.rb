@@ -5,7 +5,9 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: :desc)
   end
 
-  def show;end
+  def show
+    @comments = @post.comments
+  end
 
   def new
     @post = current_user.posts.build

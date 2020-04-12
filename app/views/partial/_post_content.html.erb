@@ -1,12 +1,15 @@
 <div class="main-content">
   <div class="content-header">
+    <!-- ユーザー情報 -->
     <p><%= image_tag 'default.png', alt: post.user.name, class: 'cover50' %></p>
     <div class="post-names">
       <p class="post-user"><%= post.user.name %></p>
       <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
     </div>
     <!-- 詳細表示リンク -->
-    <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2'), post_path(post) %>
+    <% if action_name == 'index'%>
+      <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2'), post_path(post) %>
+    <% end %>
 
     <% if post.user.id == current_user.id %>
       <div class="post-icons">
@@ -22,24 +25,28 @@
     <p class="post-content"><%= post.content %></p>
   </div><!-- /.content-body -->
 
-  <div class="content-footer">
-    <div class="post-icons">
-      <% if @like.present? %>
-        <!-- いいね解除 -->
+  <% if action_name == 'index' %>
+    <div class="content-footer">
+      <!-- いいね, コメントアイコン -->
+      <div class="post-icons">
+        <% if @like.present? %>
+          <!-- いいね解除 -->
+          <div class="post-item">
+            <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw favorite-icon'), like_path(id: @like.id), method: :delete %>
+            <%= post.like_users.count if post.like_users.count > 0 %>
+          </div><!-- /.post-icon -->
+        <% else %>
+          <!-- いいね登録 -->
+          <div class="post-item">
+            <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw'), likes_path(post_id: post.id), method: :post %>
+            <%= post.like_users.count if post.like_users.count > 0 %>
+          </div><!-- /.post-item -->
+        <% end %>
         <div class="post-item">
-          <%= link_to content_tag(:i, '', class: 'fas fa-heart fa-1_5x fa-fw favorite-icon'), like_path(id: @like.id), method: :delete %>
-          <%= post.like_users.count if post.like_users.count > 0 %>
-        </div><!-- /.post-icon -->
-      <% else %>
-        <!-- いいね登録 -->
-        <div class="post-item">
-          <%= link_to content_tag(:i, '', class: 'far fa-heart fa-1_5x fa-fw'), likes_path(post_id: post.id), method: :post %>
-          <%= post.like_users.count if post.like_users.count > 0 %>
-        </div><!-- /.post-item -->
-      <% end %>
-
-      <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment'), '#' %>
-      <span>10</span>
-    </div><!-- /.post-icon -->
-  </div><!-- /.content-footer -->
+          <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment'), '#' %>
+          <%= post.comment_users.count if post.comment_users.count > 0 %>
+        </div><!-- /.post-tem -->
+      </div><!-- /.post-icon -->
+    </div><!-- /.content-footer -->
+  <% end %>
 </div><!-- /.main-content -->

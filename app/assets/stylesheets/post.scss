@@ -1,74 +1,85 @@
 .post-container {
   width: 500px;
   margin: 0 auto;
+}
 
-  .page-title {
-    text-align: center;
-  }
+.page-title {
+  text-align: center;
+}
 
-  .nav-menu {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 
-  .main-content {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 30px;
-    margin-top: 20px;
+.main-content {
+  padding: 15px;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 
-    .time-area {
-      margin-bottom: 10px;
-    }
+.time-area {
+  margin-bottom: 10px;
+}
 
-    .content-header {
-      display: flex;
-      align-items: stretch;
+.content-header {
+  display: flex;
+  align-items: stretch;
+}
 
-      .post-names {
-        margin-left: 15px;
-        flex-basis: 63%;
+.post-names {
+  margin-left: 15px;
+  flex-basis: 63%;
+}
 
-        .post-user {
-          font-size: 18px;
-          font-weight: bold;
-        }
+.post-user {
+  font-size: 18px;
+  font-weight: bold;
+}
 
-        .post-time {
-          font-size: 12px;
-        }
-      }
-    }
+.post-time {
+  font-size: 12px;
+  color: #6f6f6f
+}
 
-    .content-body {
-      margin-top: 10px;
-      border: none;
+.content-body {
+  margin-top: 10px;
+  border: none;
+}
 
-      .post-content {
-        white-space: pre-wrap;
-      }
-    }
+.post-content {
+  white-space: pre-wrap;
+}
 
-    .content-footer {
-      margin-top: 10px;
+.content-footer {
+  margin-top: 10px;
+}
 
-      .post-icons {
-        display: flex;
+.post-icons {
+  display: flex;
+}
 
-        .post-item {
-          flex-basis: 120px;
-        }
-      }
+.post-item {
+  flex-basis: 120px;
+}
 
-      .favorite-icon {
-        color: red;
-      }
+.favorite-icon {
+  color: red;
+}
 
-      .comment {
-        margin-left: 10px;
-      }
-    }
-  }
+.comment {
+  margin-left: 10px;
+}
+
+.post-comment {
+  padding: 15px;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+}
+.comment-content {
+  margin-top: 1rem;
+  margin-left: 65px;
 }
