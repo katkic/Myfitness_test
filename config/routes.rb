@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource  :calendar, only: [:show]
   resources :relationships, only: %i[index create destroy]
   resources :posts do
-    resources :comments
+    resources :comments, except: :show
   end
   resources :likes, only: %i[index create destroy]
 end

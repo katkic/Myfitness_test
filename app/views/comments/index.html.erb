@@ -5,16 +5,16 @@
 
   <ul>
     <% @comment_users.each do |comment_user| %>
-      <div class="main-content">
-          <div class="content-header">
-            <%= link_to user_path(comment_user) do %>
-              <p><%= image_tag 'default.png', alt: comment_user.name, class: 'cover50' %></p>
-            <% end %>
-              <div class="post-names">
-                <p class="post-user"><%= link_to comment_user.name, user_path(comment_user) %></p>
-              </div><!-- /.post-names -->
-          </div><!-- /.content-header -->
-      </div><!-- /.main-content -->
+      <div class="user-container">
+        <div class="content-header">
+          <%= link_to user_path(comment_user) do %>
+            <p><%= image_tag 'default.png', alt: comment_user.name, class: 'cover50' %></p>
+          <% end %>
+            <div class="post-names">
+              <p class="post-user"><%= link_to comment_user.name, user_path(comment_user) %></p>
+            </div><!-- /.post-names -->
+        </div><!-- /.content-header -->
+      </div><!-- /.user-container -->
     <% end %>
   </ul>
 </div><!-- /.like-container -->
