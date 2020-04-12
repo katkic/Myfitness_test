@@ -29,6 +29,7 @@
     <div class="content-footer">
       <!-- いいね, コメントアイコン -->
       <div class="post-icons">
+        <!-- いいね機能 -->
         <% if @like.present? %>
           <!-- いいね解除 -->
           <div class="post-item">
@@ -42,8 +43,10 @@
             <%= post.like_users.count if post.like_users.count > 0 %>
           </div><!-- /.post-item -->
         <% end %>
+
+        <!-- コメント機能 -->
         <div class="post-item">
-          <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment'), '#' %>
+          <%= link_to content_tag(:i, '', class: 'far fa-comment fa-1_5x fa-fw comment'), new_post_comment_path(post_id: post.id) %>
           <%= post.comment_users.count if post.comment_users.count > 0 %>
         </div><!-- /.post-tem -->
       </div><!-- /.post-icon -->

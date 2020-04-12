@@ -5,6 +5,5 @@ ja:
     attributes:
       post:
         id: ID
-        title: タイトル
         content: 本文
         picture: 画像
