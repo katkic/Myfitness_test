@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true, null: false
       t.float :height
       t.string :icon
-      t.string :headdre_image
+      t.string :header_image
       t.boolean :public_flag, null: false, default: true
 
       t.timestamps
