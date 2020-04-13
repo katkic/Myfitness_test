@@ -1,0 +1,28 @@
+<div class="main-container">
+  <h1 class="page-title">ユーザー検索</h1>
+
+  <div class="profiles-container mt-3">
+    <% @users.each do |user| %>
+      <% unless current_user.id == user.id %>
+        <div class="profile-content">
+          <div class="profile-header">
+            <!-- ユーザー情報 -->
+            <%= link_to profile_path(user) do %>
+              <p><%= image_tag 'default.png', alt: user.name, class: 'cover50 mr-2' %></p>
+            <% end %>
+            <%= link_to profile_path(user) do %>
+              <p class="post-user profile-name"><%= user.name %></p>
+            <% end %>
+            <%= render 'partial/follow_form', user: user %>
+          </div><!-- /.profile-header -->
+
+          <div class="self-introduction">
+            <p>
+              テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト テキスト
+            </p>
+          </div><!-- /.self-introduction -->
+        </div><!-- /.content-header -->
+      <% end %>
+    <% end %>
+  </div><!-- /.profiles-container -->
+</div><!-- /.main-container -->

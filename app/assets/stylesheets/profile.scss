@@ -1,0 +1,71 @@
+.user-content {
+  border: 1px solid #ebebeb;
+}
+
+.header-image {
+  width: 100%;
+  height: 200px;
+  background-color: lightgray;
+}
+
+.user-profile-container {
+  padding: 20px;
+}
+
+.user-profile {
+  padding-top: 20px;
+  display: flex;
+}
+
+.user-info {
+  padding: 10px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.user-item {
+  padding-right: 20px;
+}
+
+.user-item:first-child {
+  margin-right: 80px;
+}
+
+.user-footer {
+  padding: 20px 30px 0 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-message {
+  height: 200px;
+  padding: 20px;
+  border: 1px solid #ebebeb;
+}
+
+.follow-icon {
+  background-color: #fff;
+}
+
+.follow-btn {
+  width: 135px;
+}
+
+.profile-content {
+  border: 1px solid #ebebeb;
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+}
+
+.profile-name {
+  margin-right: 220px;
+}
+
+.self-introduction {
+  margin-left: 50px;
+}
