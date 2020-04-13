@@ -1,6 +1,6 @@
 <div class="container">
   <div class="follow-header-area">
-    <h1 class="mb-2"><%= link_to @user.name, user_path(@user) %></h1>
+    <h1 class="mb-2"><%= link_to @user.name, profile_path(@user) %></h1>
   </div>
 
   <div class="follow-content">
@@ -12,7 +12,7 @@
       <ul>
         <% @following.each do |follow| %>
         <div class="follow-item">
-          <h3 class="follow-name"><%= link_to follow.name, user_path(follow) %></h3>
+          <h3 class="follow-name"><%= link_to follow.name, profile_path(follow) %></h3>
           </div><!-- /.follow-item -->
         <% end %>
       </ul>
@@ -24,7 +24,7 @@
       <ul>
         <% @followers.each do |follower| %>
         <div class="follow-item">
-          <h3 class="follow-name"><%= link_to follower.name, user_path(follower) %></h3>
+          <h3 class="follow-name"><%= link_to follower.name, profile_path(follower) %></h3>
           </div><!-- /.follow-item -->
         <% end %>
       </ul>
