@@ -6,6 +6,7 @@
   width: 100%;
   height: 200px;
   background-color: lightgray;
+  overflow: hidden;
 }
 
 .user-profile-container {
@@ -13,12 +14,12 @@
 }
 
 .user-profile {
-  padding-top: 20px;
+  padding-top: 10px;
   display: flex;
 }
 
 .user-info {
-  padding: 10px 30px;
+  padding-left: 20px;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
@@ -29,7 +30,7 @@
 }
 
 .user-item:first-child {
-  margin-right: 80px;
+  margin-right: 100px;
 }
 
 .user-footer {
@@ -39,9 +40,10 @@
 }
 
 .user-message {
-  height: 200px;
+  height: auto;
   padding: 20px;
-  border: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+  white-space: pre-wrap;
 }
 
 .follow-icon {
@@ -49,7 +51,7 @@
 }
 
 .follow-btn {
-  width: 135px;
+  width: 220px;
 }
 
 .profile-content {
@@ -68,4 +70,24 @@
 
 .self-introduction {
   margin-left: 50px;
+}
+
+.profile-header-image {
+  width: 100%;
+  height: auto;
+}
+
+.profile-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-name {
+  width: 210px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.follow-area {
+  width: 230px;
 }
