@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      profile: コメント
+    attributes:
+      profile:
+        id: ID
+        header_image: ヘッダー画像
+        icon: ユーザーアイコン
+        height: 身長
+        self_introduction: '自己紹介'
