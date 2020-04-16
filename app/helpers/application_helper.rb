@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def image_set(user)
-    user.image? ? user.image.url : 'default.png'
+  def set_icon(user)
+    user.icon && user.icon.url ? user.icon.url : 'default.png'
   end
 end

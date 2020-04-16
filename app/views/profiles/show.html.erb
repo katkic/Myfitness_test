@@ -13,15 +13,12 @@
           <p>プロフィール設定 非公開</p>
         <% end %>
 
-        <%= link_to 'アカウント編集', edit_user_registration_path %>
+        <% if @user.id == current_user.id %>
+          <%= link_to 'アカウント編集', edit_user_registration_path %>
+        <% end %>
       </div><!-- /.profile-nav -->
       <div class="user-profile">
-        <% if @profile.icon && @profile.icon.url %>
-          <p><%= image_tag @profile.icon.url, alt: @user.name, class: 'cover100' %></p>
-        <% else %>
-          <p><%= image_tag 'default.png', alt: @user.name, class: 'cover100' %></p>
-        <% end %>
-
+        <p><%= image_tag set_icon(@profile), alt: @user.name, class: 'cover100' %></p>
         <div class="user-info">
           <p class="user-name"><%= @user.name %></p>
           <% if @user.id == current_user.id %>
