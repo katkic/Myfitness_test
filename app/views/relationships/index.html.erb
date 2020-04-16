@@ -11,21 +11,31 @@
       </div>
       <ul>
         <% @following.each do |follow| %>
-        <div class="follow-item">
-          <h3 class="follow-name"><%= link_to follow.name, profile_path(follow) %></h3>
-          </div><!-- /.follow-item -->
+          <div class="profile-content">
+            <div class="profile-header">
+              <!-- ユーザー情報 -->
+              <%= render 'partial/user_name_and_icon', user: follow %>
+              <%= render 'partial/follow_form', user: follow %>
+            </div><!-- /.profile-header -->
+            <%= render 'partial/self_introduction', user: follow %>
+          </div><!-- /.profile-content -->
         <% end %>
       </ul>
     <% elsif @flag == 'followers'%>
-        <div class="follow-nav">
+      <div class="follow-nav">
         <h2 class="follow-title"><%= link_to 'フォロー中', relationships_path(user_id: @user.id, flag: 'following') %></h2>
         <h2 class="follow-title selected">フォロワー</h2>
       </div>
       <ul>
         <% @followers.each do |follower| %>
-        <div class="follow-item">
-          <h3 class="follow-name"><%= link_to follower.name, profile_path(follower) %></h3>
-          </div><!-- /.follow-item -->
+          <div class="profile-content">
+            <div class="profile-header">
+              <!-- ユーザー情報 -->
+              <%= render 'partial/user_name_and_icon', user: follower %>
+              <%= render 'partial/follow_form', user: follower %>
+            </div><!-- /.profile-header -->
+            <%= render 'partial/self_introduction', user: follower %>
+          </div><!-- /.profile-content -->
         <% end %>
       </ul>
     <% end %>
