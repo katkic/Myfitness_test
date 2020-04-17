@@ -1,15 +1,13 @@
 <div class="main-content">
   <div class="content-header">
     <!-- ユーザー情報 -->
-    <p><%= image_tag 'default.png', alt: post.user.name, class: 'cover50' %></p>
+    <p><%= image_tag set_icon(post.user.profile), alt: post.user.name, class: 'cover50' %></p>
     <div class="post-names">
       <p class="post-user"><%= post.user.name %></p>
       <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
     </div>
     <!-- 詳細表示リンク -->
-    <% if action_name == 'index'%>
       <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2'), post_path(post) %>
-    <% end %>
 
     <% if post.user.id == current_user.id %>
       <div class="post-icons">
@@ -25,7 +23,6 @@
     <p class="post-content"><%= post.content %></p>
   </div><!-- /.content-body -->
 
-  <% if action_name == 'index' %>
     <div class="content-footer">
       <!-- いいね, コメントアイコン -->
       <div class="post-icons">
@@ -51,5 +48,4 @@
         </div><!-- /.post-tem -->
       </div><!-- /.post-icon -->
     </div><!-- /.content-footer -->
-  <% end %>
 </div><!-- /.main-content -->

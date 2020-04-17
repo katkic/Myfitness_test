@@ -1,0 +1,19 @@
+<div class="main-container">
+  <h1 class="page-title">ユーザー検索</h1>
+
+  <div class="profiles-container mt-3">
+    <% @users.each do |user| %>
+      <% unless current_user.id == user.id %>
+        <div class="profile-content">
+          <div class="profile-header">
+            <!-- ユーザー情報 -->
+            <%= render 'partial/user_name_and_icon', user: user %>
+            <%= render 'partial/follow_form', user: user %>
+          </div><!-- /.profile-header -->
+
+          <%= render 'partial/self_introduction', user: user %>
+        </div><!-- /.content-header -->
+      <% end %>
+    <% end %>
+  </div><!-- /.profiles-container -->
+</div><!-- /.main-container -->

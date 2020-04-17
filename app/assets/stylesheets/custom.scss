@@ -14,7 +14,11 @@ body {
   clear: both;
 }
 
-h1, h2, h3, p, ul {
+h1,
+h2,
+h3,
+p,
+ul {
   margin: 0;
 }
 
@@ -27,7 +31,10 @@ a {
   text-decoration: none;
 }
 
-a:link, a:visited, a:hover, a:active {
+a:link,
+a:visited,
+a:hover,
+a:active {
   color: #333;
 }
 
@@ -100,6 +107,7 @@ select {
   border-radius: 90px;
   transition: opacity .5s;
   cursor: pointer;
+
   &:hover {
     opacity: .6;
   }
@@ -108,21 +116,26 @@ select {
 // sign_up
 .sinupPage {
   margin-top: 10vh;
+
   .titleArea {
     text-align: center;
+
     h1 {
       font-size: 2rem;
     }
   }
+
   .signupForm {
     .form-group {
       margin: 0 auto 1.5rem auto;
       max-width: 500px;
+
       .form-control {
         background: #f6f8fa;
       }
     }
   }
+
   .submitBtn {
     background: #29b744;
     color: #fff;
@@ -131,6 +144,7 @@ select {
     padding: 10px;
     border-radius: 90px;
     transition: opacity .5s;
+
     &:hover {
       opacity: .6;
     }
@@ -139,7 +153,7 @@ select {
 
 // devise_shared_links
 .acountPage_link {
-  & > a {
+  &>a {
     color: #0075c1;
   }
 }
@@ -147,19 +161,23 @@ select {
 // sign_in
 .signinPage {
   margin-top: 10vh;
+
   .title {
     margin: 0;
     text-align: center;
   }
+
   .new_user {
     .form-group {
       max-width: 500px;
       margin: 0 auto 1rem;
+
       .form-control {
         background: #f6f8fa;
       }
     }
   }
+
   .loginBtn {
     padding: 12px;
     width: 200px;
@@ -172,8 +190,25 @@ select {
     opacity: 1;
     transition: opacity .5s;
     cursor: pointer;
+
     &:hover {
       opacity: .7;
     }
   }
+}
+
+.main-container {
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.one-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.two-submit {
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,0 +1,59 @@
+<div class="main-container">
+  <div class="user-content">
+    <div class="header-image">
+      <!-- header-imageを設定する -->
+      <p><%= image_tag @profile.header_image.url if @profile.header_image && @profile.header_image.url %></p>
+    </div><!-- /.header-image -->
+
+    <div class="user-profile-container">
+      <div class="profile-nav">
+        <% if !@profile.present? || @profile.public_flag %>
+          <p>プロフィール設定 公開</p>
+        <% else %>
+          <p>プロフィール設定 非公開</p>
+        <% end %>
+
+        <% if @user.id == current_user.id %>
+          <%= link_to 'アカウント編集', edit_user_registration_path %>
+        <% end %>
+      </div><!-- /.profile-nav -->
+      <div class="user-profile">
+        <p><%= image_tag set_icon(@profile), alt: @user.name, class: 'cover100' %></p>
+        <div class="user-info">
+          <p class="user-name"><%= @user.name %></p>
+          <% if @user.id == current_user.id %>
+            <p><%= link_to 'プロフィール編集', edit_profile_path %></p>
+          <% end %>
+
+          <% unless @user.id == current_user.id %>
+            <div class="follow-area">
+              <%= render 'partial/follow_form', user: @user %>
+            </div><!-- /.follow-btn -->
+          <% else %>
+            <p class="follow-btn"></p>
+          <% end %>
+
+          <% if @user.id == current_user.id %>
+            <p><%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-outline-secondary btn-sm', method: :delete %></p>
+          <% end %>
+        </div><!-- /.user-info -->
+      </div><!-- /.user-info -->
+      <div class="user-footer">
+        <p><%= @post_count %> 投稿</p>
+        <%= link_to content_tag(:p, "#{@following_count} フォロー中"), relationships_path(user_id: @user.id, flag: 'following') %>
+        <%= link_to content_tag(:p, "#{@followers_count} フォロワー"), relationships_path(user_id: @user.id, flag: 'followers') %>
+      </div>
+    </div><!-- /.profile -->
+
+    <div class="user-message"><%= @profile&.self_introduction %></div><!-- /.user-message -->
+  </div><!-- /.user-profile -->
+</div><!-- /.main-container -->
+
+<div class="main-container">
+  <div class="posts">
+      <% @user.posts.each do |post| %>
+        <% @like = @user.likes.find_by(post_id: post.id) %>
+        <%= render 'partial/post_content', post: post %>
+      <% end %>
+    </div><!-- /.posts -->
+</div><!-- /.main-container -->

@@ -1,18 +1,16 @@
 <div class="post-container">
-  <div class="page-title">
+  <div class="page-title mb-3">
     <h1>いいねしたアカウント</h1>
   </div><!-- /.page-title -->
 
-  <ul>
-    <% @like_users.each do |like_user| %>
-      <div class="main-content">
-        <div class="content-header">
-          <p><%= image_tag 'default.png', alt: like_user.name, class: 'cover50' %></p>
-          <div class="post-names">
-            <p class="post-user"><%= like_user.name %></p>
-          </div><!-- /.post-names -->
-        </div><!-- /.content-header -->
-      </div><!-- /.main-content -->
-    <% end %>
-  </ul>
+  <% @like_users.each do |like_user| %>
+    <div class="profile-content">
+      <div class="profile-header">
+        <!-- ユーザー情報 -->
+        <%= render 'partial/user_name_and_icon', user: like_user %>
+        <%= render 'partial/follow_form', user: like_user %>
+      </div><!-- /.profile-header -->
+      <%= render 'partial/self_introduction', user: like_user %>
+    </div><!-- /.profile-content -->
+  <% end %>
 </div><!-- /.like-container -->

@@ -1,0 +1,53 @@
+<div class="main-container mb-3">
+  <h1 class="page-title">プロフィール編集</h1><!-- /.page-title -->
+
+  <div class="form-container mt-3">
+    <%= form_with model: @profile, html: {multipart: true}, local: true do |f| %>
+      <% if @profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@profile.errors.count, '') %> 件のエラーがあります</h2>
+
+          <ul>
+            <% @profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div><!-- /#error_explanation -->
+      <% end %><!-- ./if -->
+
+      <div class="form-group mb-4">
+        <i class="far fa-image fa-lg"></i>
+        <%= f.label :header_image %><br>
+        <%= f.file_field :header_image, accept: '.jpg, .png, .gif' %>
+      </div><!-- /.form-group -->
+
+      <div class="form-group mb-5">
+        <i class="far fa-image fa-lg"></i>
+        <%= f.label :icon %><br>
+        <%= f.file_field :icon, accept: '.jpg, .png, .gif' %>
+      </div><!-- /.form-group -->
+
+      <div class="form-group">
+        プロフィール設定&nbsp;&nbsp;
+        <%= f.radio_button :public_flag, :true, checked: true %>
+        <%= f.label :public_flag, '公開', value: true %>&nbsp;&nbsp;
+        <%= f.radio_button :public_flag, :false %>
+        <%= f.label :public_flag, '非公開', value: false %>
+      </div><!-- /.form-group -->
+
+      <div class="form-group mb-5">
+        <%= f.label :height %>
+        <%= f.number_field :height, min: 0, max:250, step:0.1, class: 'form-control' %>
+      </div><!-- /.form-group -->
+
+      <div class="form-group mb-5">
+        <%= f.label :self_introduction %>
+        <%= f.text_area :self_introduction, rows: 5, class: 'form-control' %>
+      </div><!-- /.form-group -->
+
+      <div class="one-submit">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div><!-- /.one-submit -->
+    <% end %><!-- ./form-with -->
+  </div><!-- /.form-container -->
+</div><!-- /.main-container -->

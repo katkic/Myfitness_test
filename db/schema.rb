@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_151935) do
+ActiveRecord::Schema.define(version: 2020_04_13_080908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,10 +98,11 @@ ActiveRecord::Schema.define(version: 2020_04_10_151935) do
     t.bigint "user_id", null: false
     t.float "height"
     t.string "icon"
-    t.string "headdre_image"
+    t.string "header_image"
     t.boolean "public_flag", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "self_introduction"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
