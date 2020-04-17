@@ -5,8 +5,9 @@
         <li class="footer_nav">My fitness</li>
         <li class="footer_nav"><%= link_to content_tag(:i, '', class: 'fas fa-weight fa-2x ml-3'), body_statuses_path(@body_statuses) %></li>
         <li class="footer_nav"><%= link_to content_tag(:i, '', class: 'fas fa-chart-line fa-2x ml-3'), chart_path %></li>
-        <li class="footer_nav"><%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-3'), calendar_path %></li>
+        <li class="footer_nav"><%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-3'), calendar_path(current_user.id) %></li>
       </ul>
     </nav>
   </div>
 </footer>
+

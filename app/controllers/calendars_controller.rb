@@ -1,5 +1,6 @@
 class CalendarsController < ApplicationController
   def show
-    @workouts = current_user.workouts
+    @user = User.find(params[:id])
+    @workouts = @user.workouts
   end
 end

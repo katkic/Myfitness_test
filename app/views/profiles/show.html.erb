@@ -7,11 +7,7 @@
 
     <div class="user-profile-container">
       <div class="profile-nav">
-        <% if !@profile.present? || @profile.public_flag %>
-          <p>プロフィール設定 公開</p>
-        <% else %>
-          <p>プロフィール設定 非公開</p>
-        <% end %>
+        <p>プロフィール設定 <% @profile.public_flag ? '公開' : '非公開' %>公開</p>
 
         <% if @user.id == current_user.id %>
           <%= link_to 'アカウント編集', edit_user_registration_path %>
@@ -42,6 +38,9 @@
         <p><%= @post_count %> 投稿</p>
         <%= link_to content_tag(:p, "#{@following_count} フォロー中"), relationships_path(user_id: @user.id, flag: 'following') %>
         <%= link_to content_tag(:p, "#{@followers_count} フォロワー"), relationships_path(user_id: @user.id, flag: 'followers') %>
+      </div>
+      <div>
+        <%= link_to 'トレーニング記録', calendar_path(@user) %>
       </div>
     </div><!-- /.profile -->
 
