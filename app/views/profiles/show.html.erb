@@ -13,6 +13,7 @@
           <%= link_to 'アカウント編集', edit_user_registration_path %>
         <% end %>
       </div><!-- /.profile-nav -->
+
       <div class="user-profile">
         <p><%= image_tag set_icon(@profile), alt: @user.name, class: 'cover100' %></p>
         <div class="user-info">
@@ -23,6 +24,7 @@
 
           <% unless @user.id == current_user.id %>
             <div class="follow-area">
+              <!-- フォローボタン -->
               <%= render 'partial/follow_form', user: @user %>
             </div><!-- /.follow-btn -->
           <% else %>
@@ -33,14 +35,16 @@
             <p><%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-outline-secondary btn-sm', method: :delete %></p>
           <% end %>
         </div><!-- /.user-info -->
-      </div><!-- /.user-info -->
+      </div><!-- /.user-profile -->
+
       <div class="user-footer">
         <p><%= @post_count %> 投稿</p>
         <%= link_to content_tag(:p, "#{@following_count} フォロー中"), relationships_path(user_id: @user.id, flag: 'following') %>
         <%= link_to content_tag(:p, "#{@followers_count} フォロワー"), relationships_path(user_id: @user.id, flag: 'followers') %>
       </div>
-      <div>
-        <%= link_to 'トレーニング記録', calendar_path(@user) %>
+      <div class="training_calendar">
+        <%#= link_to 'トレーニング記録', calendar_path(@user) %>
+        <%= link_to 'トレーニング記録', workout_logs_path(id: @user) %>
       </div>
     </div><!-- /.profile -->
 

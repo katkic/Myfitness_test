@@ -1,0 +1,43 @@
+<%# <div class="workout_logs-container"> %>
+<div class="workout_logs-container">
+<h1 class="page-title">トレーニング記録一覧</h1>
+
+<p class="calendar_name"><%= @user.name %>の記録</p>
+<div class="workout_logs-nav">
+<%= link_to '戻る', :back, class: 'btn btn-outline-secondary btn-sm' %>
+<div class="workout_log-calendar">
+  <%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-3'), calendar_path(@user.id) %>
+</div>
+</div><!-- /.workout_logs-nav -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>種目</th>
+      <th>日付</th>
+      <th>セット</th>
+      <th>最大重量</th>
+      <th>1RM(MAX)</th>
+      <th>合計重量</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @workout_logs.each do |workout_log| %>
+      <tr>
+        <td><%= workout_log.exercise.name %></td>
+        <td><%= format_date(workout_log.created_at) %></td>
+        <td>3</td>
+        <td>???</td>
+        <td>???</td>
+        <td>???</td>
+        <td>詳細</td>
+        <% if @user.id == current_user.id %>
+          <td>編集</td>
+          <td>削除</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div><!-- /.main-container -->

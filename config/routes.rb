@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resources :comments, except: :show
   end
   resources :likes, only: %i[index create destroy]
+  resources :workout_logs, only: :index
 end
