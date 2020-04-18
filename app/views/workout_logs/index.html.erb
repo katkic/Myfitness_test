@@ -10,7 +10,7 @@
 </div>
 </div><!-- /.workout_logs-nav -->
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>種目</th>
@@ -25,16 +25,15 @@
   <tbody>
     <% @workout_logs.each do |workout_log| %>
       <tr>
-        <td><%= workout_log.exercise.name %></td>
+        <td><%= link_to workout_log.exercise.name, workout_path(workout_log) %></td>
         <td><%= format_date(workout_log.created_at) %></td>
         <td>3</td>
         <td>???</td>
         <td>???</td>
         <td>???</td>
-        <td>詳細</td>
         <% if @user.id == current_user.id %>
-          <td>編集</td>
-          <td>削除</td>
+          <td><%= link_to '編集', edit_workout_path(workout_log) %></td>
+          <td><%= link_to '削除', workout_path(workout_log), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
         <% end %>
       </tr>
     <% end %>
