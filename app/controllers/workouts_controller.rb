@@ -4,7 +4,7 @@ class WorkoutsController < ApplicationController
 
   def index
     @exercise = Exercise.find(params[:id])
-    @workouts = @exercise.workouts.order(created_at: :desc)
+    @workouts = @exercise.workouts.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def show
