@@ -24,13 +24,16 @@ body {
 /* Not required for template or sticky footer method. */
 .container {
   width: auto;
-  max-width: 680px;
+  max-width: 600px;
   padding: 0 15px;
+
   .text-muted {
-    margin: 20px 0;
-    .footer_nav {
-      float: left;
-      margin-right: 20px;
+    margin: 10px 0;
+    padding-top: 5px;
+
+    .footer-menu {
+      display: flex;
+      justify-content: space-evenly;
     }
   }
 }
