@@ -1,19 +1,24 @@
-.menuWrapper {
-  height: 100%;
+.menu-wrapper {
+  width: 500px;
+
   .menu {
-    background-color: #e2e4e6;
+    background-color: #f7f7f7;
     padding: 10px;
-    min-width: 300px;
     margin-bottom: 20px;
-    &_header {
+    box-shadow: 0 2px 6px #c1ced7;
+
+    &-header {
       margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
-      &_name {
-        font-size: 20px;
+
+      &-name {
+        font-size: 26px;
+        font-weight: bold;
         margin: 0;
       }
-      &_action {
+
+      &-action {
         .fa-pen, .fa-trash, .fa-plus {
           font-size: 18px;
           color: #1f1f1f;
@@ -26,5 +31,20 @@
         }
       }
     }
+
+    &-index-item {
+      padding: 10px;
+      padding-left: 30px;
+      border-bottom: 1px solid #e3e3e3;
+
+      &-name {
+        font-size: 18px;
+      }
+    }
   }
+}
+
+.menu-new-footer {
+  display: flex;
+  justify-content: space-between;
 }

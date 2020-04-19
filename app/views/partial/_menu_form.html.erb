@@ -39,5 +39,8 @@
       </tbody>
     </table>
 
-    <%= f.submit nil, class: 'btn btn-primary' %>
+    <div class="menu-new-footer">
+      <%= link_to '戻る', menus_path, class: 'btn btn-secondary text-white' %>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div>
   <% end %>
