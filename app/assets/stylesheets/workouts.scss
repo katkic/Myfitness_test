@@ -1,39 +1,32 @@
-.workoutWrapper {
-  height: 100%;
+.workouts-container {
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
 
-  .workout {
-    background-color: #e2e4e6;
-    padding: 10px;
-    min-width: 300px;
-    margin-bottom: 20px;
+.workouts-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
 
-    &_header {
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
+.workout-condition {
+  border: 1px solid #ebebeb;
+  padding: 15px;
+}
 
-      &_name {
-        font-size: 20px;
-        margin: 0;
-      }
+.workout-memo {
+  border: 1px solid #ebebeb;
+  height: 10rem;
+  padding: 15px;
+  white-space: pre-wrap;
+}
 
-      &_action {
+.workout-table {
+  border: 1px solid #ebebeb;
+}
 
-        .fa-pen,
-        .fa-trash,
-        .fa-plus {
-          font-size: 18px;
-          color: #1f1f1f;
-        }
-
-        .fa-trash {
-          margin-left: 10px;
-        }
-
-        .fa-plus {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
+.workout-footer {
+  display: flex;
+  justify-content: space-between;
 }

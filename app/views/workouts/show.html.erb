@@ -1,60 +1,54 @@
-<div class="col-5 mx-auto">
+<div class="main-container">
   <div class="workout_header mt-3">
-    <h1>記録詳細</h1>
+    <h1 class="page-title"><%= @exercise.name %></h1>
   </div><!-- /.workout_header -->
 
-  <h2 class="mt-3"><%= @exercise.name %></h2>
 
-  <nav class="navbar navbar-expand-sm my-3">
-    <ul class="navbar-nav">
-      <li class="nav-item"><%= link_to '一覧', workouts_path(exercise_id: @exercise.id), class: 'nav-link btn btn-default' %></li>
-      <li class="nav-item"><%= link_to 'メニュー', menus_path, class: 'nav-link btn btn-default' %></li>
-    </ul>
+  <nav class="content-nav">
+    <%= link_to '戻る', workouts_path(id: @exercise.id), class: 'btn btn-outline-secondary' %>
+    <%= link_to 'メニュー', menus_path, class: 'btn btn-outline-secondary' %>
   </nav>
 
   <div class="exercise_log_content">
-    <div>
-      <p>トレーニング日</p>
-      <%= @workout.created_at.strftime("%Y-%m-%d %H:%M") %>
-    </div>
+    <p class="mb-2"><%= format_date_time(@workout.created_at) %></p>
 
-    <table class="table table-hover">
+    <table class="table table-hover table-style workout-table">
       <thead>
         <tr>
           <th>set</th>
           <th>weight</th>
           <th>rep</th>
+          <th>1RM(MAX)</th>
         </tr>
       </thead>
 
       <tbody>
         <% @exercise_logs.each do |exercise_log|%>
           <tr>
-            <td><%= exercise_log.set %></td>
-            <td><%= exercise_log.weight %></td>
+            <td class="pl-4"><%= exercise_log.set %></td>
+            <td><%= exercise_log.weight %> kg</td>
             <td><%= exercise_log.rep %></td>
+            <td><%= Workout.get_one_rm(@exercise_logs) %> kg</td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <div class="my-4">
-      <p>コンディション</p>
-      <p><%= @workout.condition_i18n %></p>
+    <div class="">
+      <p class="mb-1">コンディション</p>
+      <p class="workout-condition"><%= @workout.condition_i18n %></p>
     </div><!-- /.form-group -->
 
     <div class="my-4">
-      <p>メモ</p>
-      <p><%= @workout.memo %></p>
+      <p class="mb-1">メモ</p>
+      <p class="workout-memo"><%= @workout.memo %></p>
     </div>
 
-    <div>
-    <%= link_to '編集', edit_workout_path(@workout), class: 'btn btn-success text-white' %>
-    </div>
+    <div class="workout-footer">
+        <%= link_to '編集', edit_workout_path(@workout), class: 'btn btn-success text-white' %>
 
-    <div class="mt-4">
-      <%= link_to '削除', workout_path(@workout),
-        method: :delete, data: { confirm: '削除してもよろしいですか？'}, class: 'btn btn-danger text-white' %>
-    </div>
-  </div>
-</div>
+        <%= link_to '削除', workout_path(@workout),
+          method: :delete, data: { confirm: '削除してもよろしいですか？'}, class: 'btn btn-danger text-white' %>
+    </div><!-- /.workout-footer -->
+  </div><!-- /.exercise_log_content -->
+</div><!--/.main-container -->
