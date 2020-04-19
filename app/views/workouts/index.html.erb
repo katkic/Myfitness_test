@@ -1,7 +1,5 @@
-<div class="container">
-  <h1 class="my-3">トレーニング記録</h1>
-
-  <h2><%= @exercise.name %></h2>
+<div class="workouts-container">
+  <h1 class="page-title"><%= @exercise.name %></h1>
 
   <nav class="navbar navbar-expand-sm my-3">
     <ul class="navbar-nav">
@@ -20,18 +18,18 @@
           <th>最大重量</th>
           <th>1RM(MAX)</th>
           <th>合計重量</th>
-          <th colspan="2"></th>
+          <th colspan="2">(kg)</th>
         </tr>
       </thead>
 
       <tbody>
         <% @workouts.each do |workout| %>
           <tr>
-            <td><%= link_to workout.created_at.strftime("%Y-%m-%d %H:%M"), workout_path(workout) %></td>
-            <td><%= workout.exercise_logs.count %></td>
-            <td>50<%#= workout.exercise_logs.weight %></td>
-            <td>68.2<%#= workout.exercise_logs.weight %></td>
-            <td>1575.0<%#= workout.exercise_logs.weight %></td>
+            <td><%= link_to format_date(workout.created_at), workout_path(workout) %>
+            <td class="text-center"><%= Workout.get_set(workout.exercise_logs) %></td>
+            <td class="text-right pr-4"><%= Workout.get_max_weight(workout.exercise_logs) %></td>
+            <td class="text-right pr-5"><%= Workout.get_one_rm(workout.exercise_logs) %></td>
+            <td class="text-right pr-5"><%= Workout.get_total_weight(workout.exercise_logs) %></td>
             <td><%= link_to '編集', edit_workout_path(workout) %></td>
             <td><%= link_to '削除', workout_path(workout), method: :delete, data: { confirm: '削除してもよろしいですか？ '} %></td>
           </tr>

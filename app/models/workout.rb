@@ -1,4 +1,7 @@
 class Workout < ApplicationRecord
+  validates :weight, numericality: { greater_than: 0.0, allow_blank: true }
+  validates :rep, numericality: { only_integer: true, greater_than: 0, allow_blank: true }
+
   belongs_to :user
   belongs_to :exercise
   has_many :exercise_logs, dependent: :destroy

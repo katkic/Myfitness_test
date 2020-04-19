@@ -19,7 +19,7 @@
       <th>最大重量</th>
       <th>1RM(MAX)</th>
       <th>合計重量</th>
-      <th colspan="3"></th>
+      <th colspan="3">(kg)</th>
     </tr>
   </thead>
   <tbody>
@@ -27,10 +27,10 @@
       <tr>
         <td><%= link_to workout_log.exercise.name, workout_path(workout_log) %></td>
         <td><%= format_date(workout_log.created_at) %></td>
-        <td>3</td>
-        <td>???</td>
-        <td>???</td>
-        <td>???</td>
+        <td class="text-center"><%= Workout.get_set(workout_log.exercise_logs) %></td>
+        <td class="text-right pr-4"><%= Workout.get_max_weight(workout_log.exercise_logs) %></td>
+        <td class="text-right pr-5"><%= Workout.get_one_rm(workout_log.exercise_logs) %></td>
+        <td class="text-right pr-5"><%= Workout.get_total_weight(workout_log.exercise_logs) %></td>
         <% if @user.id == current_user.id %>
           <td><%= link_to '編集', edit_workout_path(workout_log) %></td>
           <td><%= link_to '削除', workout_path(workout_log), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>

@@ -212,3 +212,13 @@ select {
   display: flex;
   justify-content: space-between;
 }
+
+.table-style {
+  table-layout: fixed;
+}
+
+.content-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}

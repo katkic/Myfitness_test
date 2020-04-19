@@ -1,14 +1,14 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
+  before_action :set_exercise, only: %i[show edit update]
 
   def index
-    @exercise = Exercise.find(params[:exercise_id])
-    @workouts = Workout.where(exercise_id: params[:exercise_id]).order(created_at: :desc)
+    @exercise = Exercise.find(params[:id])
+    @workouts = @exercise.workouts.order(created_at: :desc)
   end
 
   def show
     @exercise_logs = @workout.exercise_logs
-    get_exercise
   end
 
   def new
@@ -19,10 +19,9 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.build(workout_params)
-    get_exercise
 
     if @workout.save
-      redirect_to workout_path(@workout), notice: "トレーニング「#{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を記録しました"
+      redirect_to workout_path(@workout), notice: "トレーニング「#{self.class.helpers.format_date_time(@workout.created_at)}」を記録しました"
     else
       render :new
     end
@@ -30,14 +29,11 @@ class WorkoutsController < ApplicationController
 
   def edit
     @workout.exercise_logs.build
-    get_exercise
   end
 
   def update
-    get_exercise
-
     if @workout.update(workout_params)
-      redirect_to workout_path(@workout), notice: "トレーニング「#{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を更新しました"
+      redirect_to workout_path(@workout), notice: "トレーニング「#{self.class.helpers.format_date_time(@workout.created_at)}」を更新しました"
     else
       render :edit
     end
@@ -45,8 +41,7 @@ class WorkoutsController < ApplicationController
 
   def destroy
     @workout.destroy
-    get_exercise
-    redirect_to workouts_path(exercise_id: @workout.exercise.id), notice: "「トレーニング #{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を削除しました"
+    redirect_to workouts_path(id: @workout.exercise.id), notice: "「トレーニング #{self.class.helpers.format_date_time(@workout.created_at)}」を削除しました"
   end
 
   private
@@ -65,7 +60,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.find(params[:id])
   end
 
-  def get_exercise
+  def set_exercise
     @exercise = @workout.exercise
   end
 end
