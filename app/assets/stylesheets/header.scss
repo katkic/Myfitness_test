@@ -1,0 +1,39 @@
+.header {
+  padding: 10px 20px;
+  height: 80px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  background-color: #2e2e2e;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .header-nav {
+    .header-menu {
+      padding-top: 5px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-title {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      &-user-name {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      &-inner {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
