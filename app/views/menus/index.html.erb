@@ -1,16 +1,20 @@
-<div class="col-6 mx-auto">
-  <h1 class="my-3">トレーニングメニュー</h1>
+<div class="main-container">
+  <h1 class="page-title mb-4">トレーニングメニュー</h1>
 
   <% if @menus.empty? %>
     <div>
       <p>トレーニングメニューを作成してください</p>
       <%= link_to 'メニュー作成', new_menu_path, class: 'btn btn-primary text-white mt-3' %>
     </div>
+  <% else %>
+    <div class="text-right mb-4">
+      <%= link_to 'メニュー作成', new_menu_path, class: 'btn btn-primary text-white' %>
+    </div>
   <% end %>
 
   <div class="menuWrapper">
     <% @menus.each do |menu| %>
-      <div class="menu col-6">
+      <div class="">
         <div class="menu_header">
           <h2 class="menu_header_name">
             <%= link_to menu.name, menu_path(menu) %>
@@ -32,4 +36,4 @@
       </div><!-- /.menu -->
     <% end %><!-- /@menus.each do |menu| -->
   </div><!-- /.menuWrapper -->
-</div><!-- /.col-6 mx-auto -->
+</div><!-- /.main-container mx-auto -->
