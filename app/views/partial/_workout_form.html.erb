@@ -31,11 +31,11 @@
       </div>
 
       <div class="exercise-log-area">
-        <%= f.fields_for :exercise_logs do |ef| %>
+        <%= f.fields_for :exercise_logs, @workout.exercise_logs.sort_by(&:set) do |ef| %>
           <span class="exercise-set"></span>
           <%= ef.hidden_field :set, class: 'exercise-set-hidden' %>
-          <%= ef.number_field :weight, min: 0, max:500, step:0.1, class: 'py-2 exercise-input' %>
-          <%= ef.number_field :rep, min: 0, max: 500, class: 'py-2 exercise-input' %>
+          <%= ef.number_field :weight, min: 0, max:300, class: 'py-2 exercise-input' %>
+          <%= ef.number_field :rep, min: 0, max: 300, class: 'py-2 exercise-input' %>
           <%= ef.link_to_remove '削除' %>
         <% end %>
 

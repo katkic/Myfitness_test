@@ -8,7 +8,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercise_logs = @workout.exercise_logs
+    @exercise_logs = @workout.exercise_logs.order(set: :asc)
   end
 
   def new
