@@ -28,7 +28,7 @@
             <td><%= link_to format_date(workout.created_at), workout_path(workout) %>
             <td class="text-center"><%= Workout.get_set(workout.exercise_logs) %></td>
             <td class="text-right pr-4"><%= Workout.get_max_weight(workout.exercise_logs) %></td>
-            <td class="text-right pr-5"><%= Workout.get_one_rm(workout.exercise_logs) %></td>
+            <td class="text-right pr-5"><%= Workout.get_one_rm_max(workout.exercise_logs) %></td>
             <td class="text-right pr-5"><%= Workout.get_total_weight(workout.exercise_logs) %></td>
             <td><%= link_to '編集', edit_workout_path(workout) %></td>
             <td><%= link_to '削除', workout_path(workout), method: :delete, data: { confirm: '削除してもよろしいですか？ '} %></td>

@@ -28,7 +28,7 @@
             <td class="pl-4"><%= exercise_log.set %></td>
             <td><%= exercise_log.weight %> kg</td>
             <td><%= exercise_log.rep %></td>
-            <td><%= Workout.get_one_rm(@exercise_logs) %> kg</td>
+            <td><%= Workout.get_one_rm(exercise_log) %> kg</td>
           </tr>
         <% end %>
       </tbody>
