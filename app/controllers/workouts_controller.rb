@@ -51,7 +51,7 @@ class WorkoutsController < ApplicationController
       :created_at,
       :condition,
       :memo,
-      exercise_logs_attributes: %i[set weight rep]
+      exercise_logs_attributes: %i[id set weight rep _destroy]
     )
   end
 
