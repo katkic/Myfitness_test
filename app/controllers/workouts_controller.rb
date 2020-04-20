@@ -8,13 +8,13 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercise_logs = @workout.exercise_logs
+    @exercise_logs = @workout.exercise_logs.order(set: :asc)
   end
 
   def new
     @exercise = Exercise.find(params[:exercise_id])
     @workout = Workout.new
-    5.times { @workout.exercise_logs.build }
+    3.times { @workout.exercise_logs.build }
   end
 
   def create
@@ -27,9 +27,8 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def edit
-    @workout.exercise_logs.build
-  end
+  def edit;end
+
 
   def update
     if @workout.update(workout_params)
@@ -52,7 +51,7 @@ class WorkoutsController < ApplicationController
       :created_at,
       :condition,
       :memo,
-      exercise_logs_attributes: %i[id set weight rep]
+      exercise_logs_attributes: %i[id set weight rep _destroy]
     )
   end
 

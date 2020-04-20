@@ -30,3 +30,59 @@
   display: flex;
   justify-content: space-between;
 }
+
+.exercise {
+  &-set {
+    width: 85px;
+  }
+
+  &-input {
+    width: 90px;
+    margin: 10px 35px 10px 30px;
+    background-color: #f7f7f7;
+    padding: 0 10px;
+  }
+
+  &-logs {
+    &-container {
+      border: 1px solid #CED4DA;
+      border-radius: 5px;
+      padding: 15px;
+    }
+
+    &-header {
+      display: flex;
+      margin-bottom: 10px;
+      padding-bottom:10px;
+      border-bottom: 1px solid #CED4DA;
+    }
+
+    &-area {
+      li {
+        display: inline-block;
+      }
+    }
+
+    &-set {
+      margin-left: 5px;
+      margin-right: 85px;
+      font-weight: bold;
+    }
+
+    &-weight {
+      margin-right: 75px;
+      font-weight: bold;
+    }
+
+    &-rep {
+      margin-right: 80px;
+      font-weight: bold;
+    }
+  }
+}
+
+.workouts-form-container {
+  width: 550px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
