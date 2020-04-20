@@ -3,10 +3,9 @@ class Workout < ApplicationRecord
   belongs_to :exercise
   has_many :exercise_logs, dependent: :destroy
 
-  accepts_nested_attributes_for :exercise_logs,
+  accepts_nested_attributes_for :exercise_logs, allow_destroy: true,
     reject_if: proc { |attributes|
-      attributes[:weight].blank? &&
-      attributes[:rep].blank?
+      attributes[:weight].blank? && attributes[:rep].blank?
     }
 
   enum condition: {
@@ -19,15 +18,18 @@ class Workout < ApplicationRecord
 
   class << self
     def get_set(exercise_logs)
+      return 0 if exercise_logs.empty?
       exercise_logs.last.set
     end
 
     def get_max_weight(exercise_logs)
+      return 0 if exercise_logs.empty?
       weight_arr = exercise_logs.map { |exercise_log| exercise_log[:weight] }
       weight_arr.max
     end
 
     def get_one_rm(exercise_logs)
+      return 0 if exercise_logs.empty?
       one_rm_max_arr = exercise_logs.map do |exercise_log|
         # 1RM = 使用重量 × {1 + (持ち上げた回数 ÷ 40)}
         # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
@@ -44,11 +46,7 @@ class Workout < ApplicationRecord
 
     def get_total_weight(exercise_logs)
       sum = 0
-
-      exercise_logs.each do |exercise_log|
-        sum += exercise_log[:weight] * exercise_log[:rep]
-      end
-
+      exercise_logs.each { |exercise_log| sum += exercise_log[:weight] * exercise_log[:rep] }
       sum
     end
   end

@@ -30,3 +30,39 @@
   display: flex;
   justify-content: space-between;
 }
+
+.exercise {
+  &-set {
+    display: inline-block;
+    width: 85px;
+  }
+
+  &-input {
+    width: 80px;
+    margin: 10px 50px 10px 30px;
+    background-color: #eee;
+  }
+
+  &-logs {
+    &-header {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    &-set {
+      margin-left: 5px;
+      margin-right: 85px;
+      font-weight: bold;
+    }
+
+    &-weight {
+      margin-right: 75px;
+      font-weight: bold;
+    }
+
+    &-rep {
+      margin-right: 80px;
+      font-weight: bold;
+    }
+  }
+}
