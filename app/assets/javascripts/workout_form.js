@@ -1,15 +1,15 @@
 $(document).on('turbolinks:load', function () {
   // ページ表示時にset数を表示する
-  $('.exercise-log-area').children('div.fields:visible').each(function (index) {
-    $(this).find('.exercise-set').text($('.exercise-log-area').children('div.fields:visible').index(this) + 1 + ' set');
-    $(this).find('.exercise-set-hidden').val($('.exercise-log-area').children('div.fields:visible').index(this) + 1);
+  $('.exercise-logs-area').children('div.fields:visible').each(function (index) {
+    $(this).find('.exercise-set').text($('.exercise-logs-area').children('div.fields:visible').index(this) + 1 + ' set');
+    $(this).find('.exercise-set-hidden').val($('.exercise-logs-area').children('div.fields:visible').index(this) + 1);
   });
 
   // 動的に追加されたフォームにset数を表示
   function setFieldNum() {
-    $('.exercise-log-area').children('div.fields:visible').each(function (index) {
-      $(this).find('.exercise-set').text($('.exercise-log-area').children('div.fields:visible').index(this) + 1 + ' set')
-      $(this).find('.exercise-set-hidden').val($('.exercise-log-area').children('div.fields:visible').index(this) + 1);
+    $('.exercise-logs-area').children('.fields:visible').each(function (index) {
+      $(this).find('.exercise-set').text($('.exercise-logs-area').children('.fields:visible').index(this) + 1 + ' set')
+      $(this).find('.exercise-set-hidden').val($('.exercise-logs-area').children('.fields:visible').index(this) + 1);
     });
   }
 
@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function () {
     if (!link.data('limit')) {
       return;
     }
-    if (link.siblings('.fields:visible').length >= link.data('limit')) {
+    if ($('.exercise-logs-area').children('.fields:visible').length >= link.data('limit')) {
       link.hide();
     }
   });
@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function () {
     if (!link.data('limit')) {
       return;
     }
-    if (link.siblings('.fields:visible').length < link.data('limit')) {
+    if ($('.exercise-logs-area').children('.fields:visible').length < link.data('limit')) {
       link.show();
     }
   });

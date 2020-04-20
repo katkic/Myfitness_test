@@ -33,20 +33,34 @@
 
 .exercise {
   &-set {
-    display: inline-block;
     width: 85px;
   }
 
   &-input {
-    width: 80px;
-    margin: 10px 50px 10px 30px;
-    background-color: #eee;
+    width: 90px;
+    margin: 10px 35px 10px 30px;
+    background-color: #f7f7f7;
+    padding: 0 10px;
   }
 
   &-logs {
+    &-container {
+      border: 1px solid #CED4DA;
+      border-radius: 5px;
+      padding: 15px;
+    }
+
     &-header {
       display: flex;
       margin-bottom: 10px;
+      padding-bottom:10px;
+      border-bottom: 1px solid #CED4DA;
+    }
+
+    &-area {
+      li {
+        display: inline-block;
+      }
     }
 
     &-set {
@@ -65,4 +79,10 @@
       font-weight: bold;
     }
   }
+}
+
+.workouts-form-container {
+  width: 550px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
