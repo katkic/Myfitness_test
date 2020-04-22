@@ -2,19 +2,20 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i[show edit update destroy]
 
   def index
-    @exercises = Exercise.all
+    @exercises_preset = Exercise.preset
+    @exercises_original = Exercise.original
   end
 
   def show;end
 
   def new
-    @exercise = Exercise.new
+    @exercise = current_user.exercises.build
   end
 
   def edit;end
 
   def create
-    @exercise = Exercise.new(exercise_params)
+    @exercise = current_user.exercises.build(exercise_params)
 
     if @exercise.save
       redirect_to exercise_path(@exercise), notice: 'トレーニング種目を登録しました'

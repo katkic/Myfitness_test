@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :comment_posts, through: :comments, source: :post
   has_one :profile, dependent: :destroy
+  has_many :exercises, dependent: :destroy
 
   def follow!(other_user)
     active_relationships.create!(followed_id: other_user.id)

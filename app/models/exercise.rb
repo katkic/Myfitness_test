@@ -5,6 +5,10 @@ class Exercise < ApplicationRecord
   has_many :menu_relationships, dependent: :destroy
   has_many :menus, through: :menu_relationships, source: :menu
   has_many :workouts
+  belongs_to :user
+
+  scope :preset, -> { where(preset: true) }
+  scope :original, -> { where(preset: false) }
 
   enum part: {
     unanswered1: 0,
@@ -21,8 +25,5 @@ class Exercise < ApplicationRecord
     unanswered2: 0,
     free_weight: 1,
     machine:     2,
-    own_weight:  3,
-    trunk:       4,
-    aerobic:     5,
   }
 end
