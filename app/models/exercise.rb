@@ -5,6 +5,7 @@ class Exercise < ApplicationRecord
   has_many :menu_relationships, dependent: :destroy
   has_many :menus, through: :menu_relationships, source: :menu
   has_many :workouts
+  belongs_to :user
 
   enum part: {
     unanswered1: 0,
