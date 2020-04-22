@@ -1,18 +1,16 @@
-<div class="col-7 mx-auto mt-3">
-  <h1>トレーニング種目一覧</h1>
-  <%= render 'partial/exercise_navbar' %>
+<div class="exercise-container">
+  <h1 class="page-title">トレーニング種目一覧</h1>
+  <%= render 'partial/exercise/exercise_navbar' %>
 
-  <table class="table table-hover">
-    <% @exercises.each do |exercise| %>
-      <tbody>
-        <tr>
-          <td><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></td>
-          <td class="align-middle"><%= link_to exercise.name, exercise_path(exercise) %></td>
-          <td class="align-middle"><%= exercise.part_i18n %></td>
-          <td class="align-middle"><%= exercise.category_i18n %></td>
-          <td class="align-middle"><%= link_to '編集', edit_exercise_path(exercise), class: 'btn btn-success text-white' %></td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
-</div><!-- /.container -->
+  <div class="tab-wrap">
+    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プリセット</label>
+    <div class="tab-content">
+      <%= render 'partial/exercise/exercise_content', exercises: @exercises_preset %>
+    </div>
+
+    <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">オリジナル</label>
+    <div class="tab-content">
+      <%= render 'partial/exercise/exercise_content', exercises: @exercises_original %>
+    </div>
+  </div><!-- /.tab-wap -->
+</div><!-- /.exercise-container -->

@@ -7,6 +7,9 @@ class Exercise < ApplicationRecord
   has_many :workouts
   belongs_to :user
 
+  scope :preset, -> { where(preset: true) }
+  scope :original, -> { where(preset: false) }
+
   enum part: {
     unanswered1: 0,
     chest:       1,
