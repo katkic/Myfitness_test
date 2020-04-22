@@ -22,8 +22,5 @@ class Exercise < ApplicationRecord
     unanswered2: 0,
     free_weight: 1,
     machine:     2,
-    own_weight:  3,
-    trunk:       4,
-    aerobic:     5,
   }
 end
