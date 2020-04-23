@@ -21,26 +21,20 @@
       <%= f.select :interval, [1, 2, 3, 4, 5], { include_brank: '選択してください' }, class: 'form-control', id: 'menu_interval' %>
     </div><!-- /.form-group -->
 
-    <table class="table table-hover">
-      <tbody>
-        <% Exercise.all.each do |exercise| %>
-          <tr>
-            <td>
-              <%= f.check_box :exercise_ids, {
-                multiple: true, checked: @menu.exercises.find_by(id: exercise.id).present?, include_hidden: false
-              }, exercise[:id] %>
-            </td>
-            <td><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></td>
-            <td><%= exercise.name %></td>
-            <td><%= exercise.part_i18n %></td>
-            <td><%= exercise.category_i18n %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="tab-wrap">
+      <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プリセット</label>
+      <div class="tab-content">
+        <%= render 'partial/menu/menu_form_content', { f: f, exercises: exercises_preset } %>
+      </div>
+
+      <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">オリジナル</label>
+      <div class="tab-content">
+        <%= render 'partial/menu/menu_form_content', { f: f, exercises: exercises_original } %>
+      </div>
+    </div><!-- /.tab-wap -->
 
     <div class="menu-new-footer">
-      <%= link_to '戻る', menus_path, class: 'btn btn-secondary text-white' %>
+      <%= link_to '戻る', menus_path, class: 'btn btn-outline-secondary' %>
       <%= f.submit nil, class: 'btn btn-primary' %>
     </div>
   <% end %>

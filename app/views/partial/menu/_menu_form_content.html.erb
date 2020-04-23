@@ -1,0 +1,15 @@
+<table class="table table-hover">
+    <% exercises.each do |exercise| %>
+      <tbody>
+        <tr>
+          <td class="align-middle"><%= f.check_box :exercise_ids, {
+              multiple: true, checked: @menu.exercises.find_by(id: exercise.id).present?, include_hidden: false
+            }, exercise[:id], id: exercise.id %></td>
+          <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></label></td>
+          <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.name %></label></td>
+          <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.part_i18n %></label></td>
+          <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.category_i18n %></label></td>
+        </tr>
+      </tbody>
+    <% end %>
+</table>
