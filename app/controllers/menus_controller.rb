@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :set_menu, only: %i[show edit update destroy]
+  before_action :set_exercises, only: %i[new create edit update]
 
   def index
     @menus = Menu.where(user: current_user)
@@ -44,5 +45,10 @@ class MenusController < ApplicationController
 
   def set_menu
     @menu = Menu.find(params[:id])
+  end
+
+  def set_exercises
+    @exercises_preset = Exercise.preset
+    @exercises_original = Exercise.original
   end
 end
