@@ -1,7 +1,7 @@
-<div class="main-container">
-  <div class="page-title mb-3">
+<div class="menu-container">
+  <div class="page-title mb-4">
     <h1>トレーニングメニュー作成</h1>
   </div>
 
-  <%= render 'partial/menu_form', menu: @menu %>
+  <%= render 'partial/menu/menu_form', { menu: @menu, exercises_preset: @exercises_preset, exercises_original: @exercises_original } %>
 </div>

@@ -1,9 +1,17 @@
-.menu-wrapper {
-  width: 500px;
+.menu {
+  &-container {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 
-  .menu {
+  &-wrapper {
+    width: 600px;
+  }
+
+  &-content {
     background-color: #f7f7f7;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 6px #c1ced7;
 
@@ -42,9 +50,9 @@
       }
     }
   }
-}
 
-.menu-new-footer {
-  display: flex;
-  justify-content: space-between;
+  &-new-footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
