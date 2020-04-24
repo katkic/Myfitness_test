@@ -1,6 +1,5 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
-  before_action :set_exercise, only: %i[show edit update]
 
   def index
     @exercise = Exercise.find(params[:id])
@@ -18,6 +17,7 @@ class WorkoutsController < ApplicationController
   end
 
   def create
+    @exercise = Exercise.find(params[:workout][:exercise_id])
     @workout = current_user.workouts.build(workout_params)
 
     if @workout.save
@@ -57,9 +57,6 @@ class WorkoutsController < ApplicationController
 
   def set_workout
     @workout = Workout.find(params[:id])
-  end
-
-  def set_exercise
     @exercise = @workout.exercise
   end
 end
