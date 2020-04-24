@@ -29,7 +29,7 @@
         <td><%= format_date(workout_log.created_at) %></td>
         <td class="text-center"><%= Workout.get_set(workout_log.exercise_logs) %></td>
         <td class="text-right pr-4"><%= Workout.get_max_weight(workout_log.exercise_logs) %></td>
-        <td class="text-right pr-5"><%= Workout.get_one_rm(workout_log.exercise_logs) %></td>
+        <td class="text-right pr-5"><%= Workout.get_one_rm_max(workout_log.exercise_logs) %></td>
         <td class="text-right pr-5"><%= Workout.get_total_weight(workout_log.exercise_logs) %></td>
         <% if @user.id == current_user.id %>
           <td><%= link_to '編集', edit_workout_path(workout_log) %></td>
