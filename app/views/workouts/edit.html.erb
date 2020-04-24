@@ -1,4 +1,9 @@
 <div class="workouts-form-container">
-  <h1 class="page-title">記録を編集</h1>
+  <h1 class="page-title mt-2">記録を編集</h1>
+  <h2 class="page-title mt-2"><%= @exercise.name %></h2>
+  <nav class="content-nav">
+    <%= link_to '戻る', workouts_path(id: @exercise.id), class: 'btn btn-outline-secondary' %>
+    <%= link_to 'メニュー', menus_path, class: 'btn btn-outline-secondary' %>
+  </nav>
   <%= render 'partial/workout_form', workout: @workout %>
 </div>

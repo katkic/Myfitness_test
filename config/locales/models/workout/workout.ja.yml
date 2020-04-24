@@ -7,6 +7,9 @@ ja:
         id: ID
         condition: コンディション
         memo: メモ
+      workout/exercise_logs:
+        weight: weight (kg)
+        rep: rep (回数)
   enums:
     workout:
       condition:

@@ -1,6 +1,8 @@
 class Exercise < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true
+  validates :part, inclusion: { in: [1, 2, 3, 4, 5, 6, 7] }
+  validates :category, inclusion: { in: [1, 2] }
 
   has_many :menu_relationships, dependent: :destroy
   has_many :menus, through: :menu_relationships, source: :menu
@@ -11,7 +13,6 @@ class Exercise < ApplicationRecord
   scope :original, -> { where(preset: false) }
 
   enum part: {
-    unanswered1: 0,
     chest:       1,
     leg:         2,
     back:        3,
@@ -22,7 +23,6 @@ class Exercise < ApplicationRecord
   }
 
   enum category: {
-    unanswered2: 0,
     free_weight: 1,
     machine:     2,
   }
