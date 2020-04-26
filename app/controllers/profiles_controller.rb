@@ -3,7 +3,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: :update
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).order(id: :asc)
   end
 
   def show
