@@ -1,8 +1,8 @@
 class Exercise < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true
-  validates :part, inclusion: { in: [1, 2, 3, 4, 5, 6, 7] }
-  validates :category, inclusion: { in: [1, 2] }
+  validates :part, inclusion: { in: %w[chest leg back shoulder arm abdominals other] }
+  validates :category, inclusion: { in: %w[free_weight machine] }
 
   has_many :menu_relationships, dependent: :destroy
   has_many :menus, through: :menu_relationships, source: :menu
