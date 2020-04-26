@@ -9,9 +9,6 @@ class Exercise < ApplicationRecord
   has_many :workouts
   belongs_to :user
 
-  scope :preset, -> { where(preset: true) }
-  scope :original, -> { where(preset: false) }
-
   enum part: {
     chest:       1,
     leg:         2,
@@ -26,4 +23,22 @@ class Exercise < ApplicationRecord
     free_weight: 1,
     machine:     2,
   }
+
+  scope :preset, -> { where(preset: true) }
+  scope :original, -> { where(preset: false) }
+
+  scope :exercise_search, -> (search_params) do
+    if search_params[:name].present?
+      name_like(search_params[:name])
+    elsif search_params[:part].present?
+      preset_is.part_is(search_params[:part])
+    elsif search_params[:category].present?
+      preset_is.category_is(search_params[:category])
+    end
+  end
+
+  scope :preset_is, -> { where(preset: true) }
+  scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
+  scope :part_is, -> (part) { where(part: part) if part.present? }
+  scope :category_is, -> (category) { where(category: category) if category.present? }
 end

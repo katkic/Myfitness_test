@@ -1,6 +1,7 @@
 <div class="exercise-container">
   <h1 class="page-title">トレーニング種目一覧</h1>
   <%= render 'partial/exercise/exercise_navbar' %>
+  <%= render 'partial/exercise_search_form', search_params: @search_params %>
 
   <div class="tab-wrap">
     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プリセット</label>

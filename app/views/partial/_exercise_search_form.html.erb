@@ -1,0 +1,27 @@
+<%= form_with scope: :search, method: :get, url: search_exercises_path, local: true do |f| %>
+  <div class="mb-3 ml-2">
+    <%= f.label :name_search, '種目名' %>
+    <% if search_params.present? %>
+    <%# タスク検索後、入力値を初期値とする。 以下同じ %>
+      <%= f.text_field :name, value: search_params[:name], class: 'search-name-field' %><br>
+    <% else %>
+      <%= f.text_field :name, class: 'search-name-field' %><br>
+    <% end %>
+
+    <%= f.label :part_search, '部位' %>
+    <% if search_params.present? %>
+      <%= f.select :part, Exercise.parts_i18n.invert, include_blank: '選択してください', selected: search_params[:part] %>
+    <% else %>
+      <%= f.select :part, Exercise.parts_i18n.invert, include_blank: '選択してください', selected: '' %>
+    <% end %>
+
+    <%= f.label :category_search, 'カテゴリー' %>
+    <% if search_params.present? %>
+      <%= f.select :category, Exercise.categories_i18n.invert, include_blank: '選択してください', selected: search_params[:category] %>
+    <% else %>
+      <%= f.select :category, Exercise.categories_i18n.invert, include_blank: '選択してください', selected: '' %>
+    <% end %>
+
+    <%= f.submit '検索', class: 'btn btn-primary ml-3' %>
+  </div>
+<% end %><!-- /.mb-3 ml-2 -->

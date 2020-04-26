@@ -2,8 +2,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i[show edit update destroy]
 
   def index
-    @exercises_preset = Exercise.preset
-    @exercises_original = Exercise.original
+    set_exercise_preset_and_original
   end
 
   def show;end
@@ -37,6 +36,19 @@ class ExercisesController < ApplicationController
     redirect_to exercises_path, notice: 'トレーニング種目を削除しました'
   end
 
+  def search
+    @search_params = exercise_search_params
+
+    if @search_params[:name].blank? && @search_params[:part].blank? && @search_params[:category].blank?
+      set_exercise_preset_and_original
+    else
+      @search_params[:preset] = true
+      @exercises_preset = Exercise.exercise_search(@search_params)
+    end
+
+    render :index
+  end
+
   private
 
   def exercise_params
@@ -45,5 +57,14 @@ class ExercisesController < ApplicationController
 
   def set_exercise
     @exercise = Exercise.find(params[:id])
+  end
+
+  def set_exercise_preset_and_original
+    @exercises_preset = Exercise.preset
+    @exercises_original = Exercise.original
+  end
+
+  def exercise_search_params
+    params.fetch(:search, {}).permit(:name, :part, :category)
   end
 end
