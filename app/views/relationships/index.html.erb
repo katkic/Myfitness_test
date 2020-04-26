@@ -3,12 +3,19 @@
     <h1 class="mb-2"><%= link_to @user.name, profile_path(@user) %></h1>
   </div>
 
-  <div class="follow-content">
+  <div class="nav-menu">
+    <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
+  </div><!-- /.nav-menu -->
+
+  <div class="tab-wrap">
     <% if @flag == 'following' %>
-      <div class="follow-nav">
-        <h2 class="follow-title selected">フォロー中</h2>
-        <h2 class="follow-title"><%= link_to 'フォロワー', relationships_path(user_id: @user.id, flag: 'followers') %></h2>
-      </div>
+      <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked"><label class="tab-label" for="TAB-01">フォロー中</label>
+    <% else %>
+      <input id="TAB-01" type="radio" name="TAB" class="tab-switch"><label class="tab-label" for="TAB-01">フォロー中</label>
+    <% end %>
+
+    <div class="tab-content">
+      <p class="mb-2"><%= @following.count %> フォロー中</p>
       <ul>
         <% @following.each do |follow| %>
           <div class="profile-content">
@@ -21,11 +28,16 @@
           </div><!-- /.profile-content -->
         <% end %>
       </ul>
-    <% elsif @flag == 'followers'%>
-      <div class="follow-nav">
-        <h2 class="follow-title"><%= link_to 'フォロー中', relationships_path(user_id: @user.id, flag: 'following') %></h2>
-        <h2 class="follow-title selected">フォロワー</h2>
-      </div>
+    </div><!-- /.tab-content -->
+
+    <% if @flag == 'followers' %>
+      <input id="TAB-02" type="radio" name="TAB" class="tab-switch" checked="checked"><label class="tab-label" for="TAB-02">フォロワー</label>
+    <% else %>
+      <input id="TAB-02" type="radio" name="TAB" class="tab-switch"><label class="tab-label" for="TAB-02">フォロワー</label>
+    <% end %>
+
+    <div class="tab-content">
+      <p  class="mb-2"><%= @followers.count %> フォロワー</p>
       <ul>
         <% @followers.each do |follower| %>
           <div class="profile-content">
@@ -38,8 +50,6 @@
           </div><!-- /.profile-content -->
         <% end %>
       </ul>
-    <% end %>
-
-    <%= link_to '戻る', :back, class: 'nav-link btn btn-default' %>
-  </div><!-- /.followcontent -->
+    </div><!-- /.tab-content -->
+  </div><!-- /.tab-wap -->
 </div><!-- /.container -->

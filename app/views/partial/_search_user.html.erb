@@ -1,0 +1,6 @@
+<%= search_form_for @q, url: profiles_path do |f| %>
+  <%= f.label :serch_name, 'ユーザーネーム' %>
+  <%= f.search_field :name_cont, class: 'search-field' %>
+
+<%= f.submit %>
+<% end %>

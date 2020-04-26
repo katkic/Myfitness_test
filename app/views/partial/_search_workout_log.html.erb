@@ -1,0 +1,14 @@
+<%= form_with scope: :search, method: :get, url: search_workout_logs_path, local: true do |f| %>
+  <div class="mb-3 ml-2">
+    <%= f.label :name_search, '名称' %>
+    <% if @search_params.present? %>
+    <%# タスク検索後、入力値を初期値とする。 以下同じ %>
+      <%= f.text_field :name, value: @search_params[:name] %>
+    <% else %>
+      <%= f.text_field :name %>
+    <% end %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+
+    <%= f.submit '実行する', class: 'btn btn-primary ml-3' %>
+  </div><!-- /.mb-3 ml-2 -->
+<% end %>

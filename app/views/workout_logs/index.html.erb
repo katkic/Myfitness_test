@@ -1,42 +1,45 @@
-<%# <div class="workout_logs-container"> %>
 <div class="workout_logs-container">
-<h1 class="page-title">トレーニング記録一覧</h1>
+  <h1 class="page-title">トレーニング記録一覧</h1>
 
-<p class="calendar_name"><%= @user.name %>の記録</p>
-<div class="workout_logs-nav">
-<%= link_to '戻る', :back, class: 'btn btn-outline-secondary btn-sm' %>
-<div class="workout_log-calendar">
-  <%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-3'), calendar_path(@user.id) %>
-</div>
-</div><!-- /.workout_logs-nav -->
+  <p class="calendar_name"><%= @user.name %>の記録</p>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>種目</th>
-      <th>日付</th>
-      <th>セット</th>
-      <th>最大重量</th>
-      <th>1RM(MAX)</th>
-      <th>合計重量</th>
-      <th colspan="3">(kg)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @workout_logs.each do |workout_log| %>
+  <%= render '/partial/search_workout_log' %>
+
+  <div class="workout_logs-nav">
+    <%= link_to '戻る', :back, class: 'btn btn-outline-secondary btn-sm' %>
+
+    <div class="workout_log-calendar">
+      <%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-3'), calendar_path(@user.id) %>
+    </div>
+  </div><!-- /.workout_logs-nav -->
+
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= link_to workout_log.exercise.name, workout_path(workout_log) %></td>
-        <td><%= format_date(workout_log.created_at) %></td>
-        <td class="text-center"><%= Workout.get_set(workout_log.exercise_logs) %></td>
-        <td class="text-right pr-4"><%= Workout.get_max_weight(workout_log.exercise_logs) %></td>
-        <td class="text-right pr-5"><%= Workout.get_one_rm_max(workout_log.exercise_logs) %></td>
-        <td class="text-right pr-5"><%= Workout.get_total_weight(workout_log.exercise_logs) %></td>
-        <% if @user.id == current_user.id %>
-          <td><%= link_to '編集', edit_workout_path(workout_log) %></td>
-          <td><%= link_to '削除', workout_path(workout_log), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
-        <% end %>
+        <th>種目</th>
+        <th>日付</th>
+        <th>セット</th>
+        <th>最大重量</th>
+        <th>1RM(MAX)</th>
+        <th>合計重量</th>
+        <th colspan="3">(kg)</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-</div><!-- /.main-container -->
+    </thead>
+    <tbody>
+      <% @workout_logs.each do |workout_log| %>
+        <tr>
+          <td><%= link_to workout_log.exercise.name, workout_path(workout_log) %></td>
+          <td><%= format_date(workout_log.created_at) %></td>
+          <td class="text-center"><%= Workout.get_set(workout_log.exercise_logs) %></td>
+          <td class="text-right pr-4"><%= Workout.get_max_weight(workout_log.exercise_logs) %></td>
+          <td class="text-right pr-5"><%= Workout.get_one_rm_max(workout_log.exercise_logs) %></td>
+          <td class="text-right pr-5"><%= Workout.get_total_weight(workout_log.exercise_logs) %></td>
+          <% if @user.id == current_user.id %>
+            <td><%= link_to '編集', edit_workout_path(workout_log) %></td>
+            <td><%= link_to '削除', workout_path(workout_log), method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div><!-- /.workout_logs-container -->
