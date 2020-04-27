@@ -43,6 +43,9 @@ class BodyStatusesController < ApplicationController
       :created_at,
       :body_weight,
       :body_fat,
+      :picture1,
+      :picture2,
+      :picture3
     )
   end
 

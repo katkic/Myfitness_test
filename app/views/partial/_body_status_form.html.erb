@@ -5,7 +5,7 @@
     </ul>
   </nav>
 
-  <%= form_with model: body_status, local: true do |f| %>
+  <%= form_with model: body_status, html: { multipart: true }, local: true do |f| %>
     <% if body_status.errors.any? %>
       <div id="error_explanation" class="mb-4">
         <h2><%= pluralize(body_status.errors.count, "") %> 件のエラーがあります</h2>
@@ -30,6 +30,27 @@
     <div class="form-group">
       <%= f.label :body_fat %>
       <%= f.number_field :body_fat, min: 0, max:50, step:0.1, class: 'form-control' %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group mb-4">
+      <i class="far fa-image fa-lg"></i>
+      <%= f.label :picture1 %><br>
+      <p><%= image_tag @body_status.picture1.url(:thumb), alt: '写真1' if @body_status.picture1 && @body_status.picture1.url %></p>
+      <%= f.file_field :picture1, accept: '.jpg, .png, .gif' %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group mb-4">
+      <i class="far fa-image fa-lg"></i>
+      <%= f.label :picture2 %><br>
+      <p><%= image_tag @body_status.picture2.url(:thumb), alt: '写真2' if @body_status.picture2 && @body_status.picture2.url %></p>
+      <%= f.file_field :picture2, accept: '.jpg, .png, .gif' %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group mb-4">
+      <i class="far fa-image fa-lg"></i>
+      <%= f.label :picture3 %><br>
+      <p><%= image_tag @body_status.picture3.url(:thumb), alt: '写真3' if @body_status.picture3 && @body_status.picture3.url %></p>
+      <%= f.file_field :picture3, accept: '.jpg, .png, .gif' %>
     </div><!-- /.form-group -->
 
     <div class="form-group">
