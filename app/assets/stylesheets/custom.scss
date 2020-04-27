@@ -83,6 +83,22 @@ select {
   border-radius: 50%;
 }
 
+.rect-50 {
+  object-fit: cover;
+  width: 50px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.rect-100 {
+  object-fit: cover;
+  width: 100px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
 // Font Awesomeアイコンのサイズ変更
 .fa-1_5x {
   font-size: 1.5em;
