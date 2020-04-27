@@ -45,7 +45,10 @@ class BodyStatusesController < ApplicationController
       :body_fat,
       :picture1,
       :picture2,
-      :picture3
+      :picture3,
+      :remove_picture1,
+      :remove_picture2,
+      :remove_picture3
     )
   end
 
