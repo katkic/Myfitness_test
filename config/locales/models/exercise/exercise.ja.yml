@@ -9,6 +9,7 @@ ja:
         part: 部位
         category: カテゴリー
         description: 説明
+        icon: 画像
   enums:
     exercise:
       part:

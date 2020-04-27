@@ -2,7 +2,7 @@
   <% exercises&.each do |exercise| %>
     <tbody>
       <tr>
-        <td><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></td>
+        <td><p><%= image_tag set_exercise_icon(exercise), alt: exercise.name, class: 'rect-50 mr-2' %></p></td>
         <td class="align-middle"><%= link_to exercise.name, exercise_path(exercise) %></td>
         <td class="align-middle"><%= exercise.part_i18n %></td>
         <td class="align-middle"><%= exercise.category_i18n %></td>

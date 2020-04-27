@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="title-area mt-4 clearfix">
-    <p><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '100' %></p>
+    <p><%= image_tag set_exercise_icon(@exercise), alt: @exercise.name, class: 'rect-100 mr-2' %></p>
     <h3><%= @exercise.name %></h3>
   </div>
 
