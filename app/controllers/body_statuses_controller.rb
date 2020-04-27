@@ -46,6 +46,9 @@ class BodyStatusesController < ApplicationController
       :picture1,
       :picture2,
       :picture3,
+      :picture1_cache,
+      :picture2_cache,
+      :picture3_cache,
       :remove_picture1,
       :remove_picture2,
       :remove_picture3
