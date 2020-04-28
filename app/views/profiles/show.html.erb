@@ -1,8 +1,8 @@
 <div class="main-container">
   <div class="user-content">
-    <div class="header-image">
+    <div class="header-image-area">
       <!-- header-imageを設定する -->
-      <p><%= image_tag @profile.header_image.url if @profile.header_image && @profile.header_image.url %></p>
+      <p><%= image_tag @profile.header_image.url, class: 'header-image' if @profile.header_image && @profile.header_image.url %></p>
     </div><!-- /.header-image -->
 
     <div class="user-profile-container">

@@ -15,18 +15,25 @@
         </div><!-- /#error_explanation -->
       <% end %><!-- ./if -->
 
+      <%# ヘッダー画像 %>
       <div class="form-group mb-4">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :header_image %><br>
-        <%= f.file_field :header_image, accept: '.jpg, .png, .gif' %>
+        <p class="mb-2"><%= image_tag set_header_image(@profile), alt: 'ヘッダー画像のダミー', class: 'header-image', id: :header_image_prev %></p>
+        <%= f.file_field :header_image, accept: '.jpg, .png, .gif', id: :header_image %>
+        <p class="mt-2"><%= f.check_box :remove_header_image, id: :remove_header_image %><label for="remove_header_image">画像を削除する</label></p>
       </div><!-- /.form-group -->
 
+      <%# ユーザーアイコン %>
       <div class="form-group mb-5">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :icon %><br>
-        <%= f.file_field :icon, accept: '.jpg, .png, .gif' %>
+        <p class="mb-2"><%= image_tag set_icon(@profile), alt: 'ユーザーアイコンのダミー', class: 'cover100', id: :user_icon_prev %></p>
+        <%= f.file_field :icon, accept: '.jpg, .png, .gif', id: :user_icon %>
+        <p class="mt-2"><%= f.check_box :remove_icon, id: :remove_icon %><label for="remove_icon">画像を削除する</label></p>
       </div><!-- /.form-group -->
 
+      <%# プロフィールの公開・非公開 %>
       <div class="form-group">
         プロフィール設定&nbsp;&nbsp;
         <%= f.radio_button :public_flag, :true, checked: true %>
@@ -35,11 +42,13 @@
         <%= f.label :public_flag, '非公開', value: false %>
       </div><!-- /.form-group -->
 
+      <%# 身長 %>
       <div class="form-group mb-5">
         <%= f.label :height %>
         <%= f.number_field :height, min: 0, max:250, step:0.1, class: 'form-control' %>
       </div><!-- /.form-group -->
 
+      <%# 自己紹介 %>
       <div class="form-group mb-5">
         <%= f.label :self_introduction %>
         <%= f.text_area :self_introduction, rows: 5, class: 'form-control' %>
