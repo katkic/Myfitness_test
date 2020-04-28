@@ -2,11 +2,17 @@
   border: 1px solid #ebebeb;
 }
 
-.header-image {
-  width: 100%;
-  height: 200px;
+.header-image-area {
+  width: 500px;
+  height: 250px;
   background-color: lightgray;
-  overflow: hidden;
+}
+
+.header-image {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+  background-color: #fff;
 }
 
 .user-profile-container {

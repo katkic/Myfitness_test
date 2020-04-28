@@ -15,7 +15,6 @@
 }
 
 .main-content {
-  padding: 15px;
   border: 1px solid #ebebeb;
   border-radius: 3px;
   margin-bottom: 20px;
@@ -33,10 +32,11 @@
 }
 
 .time-area {
-  margin-bottom: 10px;
+  padding: 15px 15px 0;
 }
 
 .content-header {
+  padding: 15px;
   display: flex;
   align-items: stretch;
 }
@@ -57,7 +57,7 @@
 }
 
 .content-body {
-  margin-top: 10px;
+  padding: 0 15px 15px;
   border: none;
 }
 
@@ -66,11 +66,15 @@
 }
 
 .content-footer {
-  margin-top: 10px;
+  padding: 15px;
 }
 
 .post-icons {
   display: flex;
+}
+
+.post-icon:hover {
+  opacity: 0.8;
 }
 
 .post-item {
@@ -94,4 +98,18 @@
   margin-top: 1rem;
   margin-left: 65px;
   white-space: pre-wrap;
+}
+
+.post-picture {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+
+.post-picture-form {
+  object-fit: cover;
+  width: 300px;
+  height: auto;
+  background-color: #fff;
 }

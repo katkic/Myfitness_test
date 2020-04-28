@@ -34,7 +34,9 @@ class ProfilesController < ApplicationController
       :icon,
       :height,
       :public_flag,
-      :self_introduction
+      :self_introduction,
+      :remove_header_image,
+      :remove_icon
     )
   end
 

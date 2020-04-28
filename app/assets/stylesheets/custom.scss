@@ -106,6 +106,13 @@ select {
   background-color: #fff;
 }
 
+.header_image {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+
 // Font Awesomeアイコンのサイズ変更
 .fa-1_5x {
   font-size: 1.5em;
