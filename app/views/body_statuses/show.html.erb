@@ -10,7 +10,7 @@
 
   <table class="table table-hover">
     <tr>
-      <th>日付</th>
+      <th>測定日</th>
       <td><%= @body_status.created_at.strftime("%Y-%m-%d %H:%M") %></td>
     </tr>
     <tr>
@@ -22,6 +22,12 @@
       <td><%= @body_status.body_fat %></td>
     </tr>
   </table><!-- /.table table-hover -->
+
+  <div class="image-area">
+    <p class="mb-2"><%= image_tag @body_status.picture1.url(:thumb), alt: '写真1' if @body_status.picture1 && @body_status.picture1.url %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture2.url(:thumb), alt: '写真2' if @body_status.picture2 && @body_status.picture2.url %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture3.url(:thumb), alt: '写真3' if @body_status.picture3 && @body_status.picture3.url %></p>
+  </div><!-- /.image-area -->
 
   <%= link_to '編集', edit_body_status_path(@body_status), class: 'btn btn-success text-white' %>
   <%= link_to '削除', body_status_path(@body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn btn-danger text-white' %>

@@ -43,6 +43,15 @@ class BodyStatusesController < ApplicationController
       :created_at,
       :body_weight,
       :body_fat,
+      :picture1,
+      :picture2,
+      :picture3,
+      :picture1_cache,
+      :picture2_cache,
+      :picture3_cache,
+      :remove_picture1,
+      :remove_picture2,
+      :remove_picture3
     )
   end
 
