@@ -27,6 +27,16 @@
     </div><!-- /.form-group -->
   </div><!-- /.new-content -->
 
+  <%# 画像投稿 %>
+  <div class="form-group mb-4">
+    <i class="far fa-image fa-lg"></i>
+    <%= f.label :picture %><br>
+    <p class="mb-2"><%= image_tag set_post_picture(post), alt: '投稿画像のダミー', class: 'post-picture-form', id: :post_picture_prev %></p>
+    <%= f.file_field :picture, accept: '.jpg, .png, .gif', id: :post_picture %>
+    <%= f.hidden_field :picture_cache %>
+    <p class="mt-2"><%= f.check_box :remove_picture, id: :remove_picture %><label for="remove_picture">画像を削除する</label></p>
+  </div><!-- /.form-group -->
+
   <div class="nav-menu">
     <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
     <%= f.submit '投稿する', class: 'btn btn-primary' %>

@@ -7,6 +7,10 @@ module ApplicationHelper
     profile.header_image && profile.header_image.url ? profile.header_image.url : 'header_image_default.png'
   end
 
+  def set_post_picture(post)
+    post.picture && post.picture.url ? post.picture.url : 'no_image_gray_medium.png'
+  end
+
   def set_exercise_icon(exercise)
     exercise.icon && exercise.icon.url ? exercise.icon.url(:thumb) : 'exercise_icon.png'
   end
