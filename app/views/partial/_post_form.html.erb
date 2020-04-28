@@ -18,7 +18,7 @@
       </div><!-- /.time-area -->
 
       <div class="content-header">
-        <p><%= image_tag 'default.png', alt: current_user.name, class: 'cover50' %></p>
+        <p><%= image_tag set_icon(@post.user.profile), alt: current_user.name, class: 'cover50' %></p>
         <div class="post-names">
           <p class="post-user"><%= current_user.name %></p>
         </div><!-- /.post-names -->
