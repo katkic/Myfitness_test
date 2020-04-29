@@ -16,19 +16,19 @@
       <% end %><!-- ./if -->
 
       <%# ヘッダー画像 %>
-      <div class="form-group mb-4">
+      <div class="form-group mb-3">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :header_image %><br>
-        <p class="mb-2"><%= image_tag set_header_image(@profile), alt: 'ヘッダー画像のダミー', class: 'header-image', id: :header_image_prev %></p>
+        <p class="mb-2"><%= image_tag set_image(@profile.header_image, :default_header_image), alt: 'ヘッダー画像のダミー', class: 'header-image', id: :header_image_prev %></p>
         <%= f.file_field :header_image, accept: '.jpg, .png, .gif', id: :header_image %>
         <p class="mt-2"><%= f.check_box :remove_header_image, id: :remove_header_image %><label for="remove_header_image">画像を削除する</label></p>
       </div><!-- /.form-group -->
 
       <%# ユーザーアイコン %>
-      <div class="form-group mb-5">
+      <div class="form-group">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :icon %><br>
-        <p class="mb-2"><%= image_tag set_icon(@profile), alt: 'ユーザーアイコンのダミー', class: 'cover100', id: :user_icon_prev %></p>
+        <p class="mb-2"><%= image_tag set_image(@profile.icon, :default_user_icon), alt: 'ユーザーアイコンのダミー', class: 'cover100', id: :user_icon_prev %></p>
         <%= f.file_field :icon, accept: '.jpg, .png, .gif', id: :user_icon %>
         <p class="mt-2"><%= f.check_box :remove_icon, id: :remove_icon %><label for="remove_icon">画像を削除する</label></p>
       </div><!-- /.form-group -->
@@ -43,7 +43,7 @@
       </div><!-- /.form-group -->
 
       <%# 身長 %>
-      <div class="form-group mb-5">
+      <div class="form-group">
         <%= f.label :height %>
         <%= f.number_field :height, min: 0, max:250, step:0.1, class: 'form-control' %>
       </div><!-- /.form-group -->

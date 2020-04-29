@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="content-header">
     <!-- ユーザー情報 -->
-    <p><%= image_tag set_icon(post.user.profile), alt: post.user.name, class: 'cover50' %></p>
+    <p><%= image_tag set_image(post.user.profile.icon, :default_user_icon), alt: post.user.name, class: 'cover50' %></p>
     <div class="post-names">
       <p class="post-user"><%= post.user.name %></p>
       <p class="post-time"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></p>
@@ -24,7 +24,7 @@
   </div><!-- /.content-body -->
 
   <div class="picture-area">
-    <p class="mb-2"><%= image_tag post.picture.url, alt: '投稿写真', class: 'post-picture' if post.picture && post.picture.url %></p>
+    <p class="mb-2"><%= image_tag post.picture.url, alt: '投稿写真', class: 'post-picture' if post.picture.present? %></p>
   </div><!-- /.picture-area -->
 
     <div class="content-footer">
