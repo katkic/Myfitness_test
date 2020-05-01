@@ -5,8 +5,9 @@ ja:
     attributes:
       body_status:
         id: ID
-        body_weight: 体重
-        body_fat: 体脂肪
+        user: ユーザー
+        body_weight: 体重(kg)
+        body_fat: 体脂肪(%)
         picture1: 写真１
         picture2: 写真２
         picture3: 写真３

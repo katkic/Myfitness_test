@@ -5,6 +5,8 @@ ja:
     attributes:
       workout:
         id: ID
+        user: ユーザー
+        exercise: 種目
         condition: コンディション
         memo: メモ
       workout/exercise_logs:

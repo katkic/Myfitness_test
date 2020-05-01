@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      relationship: フォロー中間テーブル
+    attributes:
+      relationship:
+        id: ID
+        follower: フォローユーザー
+        followed: フォロー中
