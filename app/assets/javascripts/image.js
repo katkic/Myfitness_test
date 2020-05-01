@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function () {
     }
   }
 
-  $('#user_icon, #header_image, #post_picture, #body_picture1, #body_picture2, #body_picture3').change(function () {
+  $('#user_icon, #header_image, #exercise_icon,#post_picture, #body_picture1, #body_picture2, #body_picture3').change(function () {
     readURL(this);
   });
 });
