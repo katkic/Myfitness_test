@@ -11,10 +11,14 @@
       </div>
     <% end %>
 
-    <div class="form-group mb-4">
+    <%# アイコン %>
+    <div class="form-group">
       <i class="far fa-image fa-lg"></i>
       <%= f.label :icon %><br>
-      <%= f.file_field :icon, accept: '.jpg, .png, .gif' %>
+      <p class="mb-2"><%= image_tag set_image(exercise.icon, :default_exercise_icon), id: :exercise_icon_prev, class: 'rect-100', alt: '写真1' %></p>
+      <%= f.file_field :con, id: :exercise_icon, accept: '.jpg, .png, .gif' %>
+      <%= f.hidden_field :icon_cache %>
+      <p class="mt-2"><label><%= f.check_box :remove_icon %>画像を削除する</label></p>
     </div><!-- /.form-group -->
 
     <%# 名称 %>

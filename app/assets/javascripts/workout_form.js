@@ -1,9 +1,6 @@
 $(document).on('turbolinks:load', function () {
   // ページ表示時にset数を表示する
-  $('.exercise-logs-area').children('div.fields:visible').each(function (index) {
-    $(this).find('.exercise-set').text($('.exercise-logs-area').children('div.fields:visible').index(this) + 1 + ' set');
-    $(this).find('.exercise-set-hidden').val($('.exercise-logs-area').children('div.fields:visible').index(this) + 1);
-  });
+  setFieldNum();
 
   // 動的に追加されたフォームにset数を表示
   function setFieldNum() {

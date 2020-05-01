@@ -52,7 +52,15 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:name, :part, :category, :description, :icon)
+    params.require(:exercise).permit(
+      :name,
+      :part,
+      :category,
+      :description,
+      :icon,
+      :icon_cache,
+      :remove_icon
+    )
   end
 
   def set_exercise
