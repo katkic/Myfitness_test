@@ -1,10 +1,11 @@
 ja:
   activerecord:
     models:
-      profile: コメント
+      profile: プロフィール
     attributes:
       profile:
         id: ID
+        user: ユーザー
         header_image: ヘッダー画像
         icon: ユーザーアイコン
         height: 身長

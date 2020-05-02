@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      menu_relationship: メニュー中間テーブル
+    attributes:
+      menu_relationship:
+        id: ID
+        menu: メニュー
+        exercise: 種目

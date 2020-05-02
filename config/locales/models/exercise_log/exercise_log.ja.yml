@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      exercise_log: トレーニングログ
+    attributes:
+      exercise_log:
+        id: ID
+        workout: トレーニング
+        set: セット
+        weight: ウェイト(kg)
+        rep: 回数
