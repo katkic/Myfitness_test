@@ -17,6 +17,7 @@
 
 .user-profile-container {
   padding: 20px;
+  background-color: #fff;
 }
 
 .user-profile {
@@ -50,6 +51,7 @@
   padding: 20px;
   border-top: 1px solid #ebebeb;
   white-space: pre-wrap;
+  background-color: #fff
 }
 
 .follow-icon {
@@ -112,4 +114,9 @@
 
 .search-field {
   width: 50%;
+}
+
+.profile-content-top {
+  background-color: #fff;
+  border: 1px solid #CED4DA;
 }

@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: 'YuGothic', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
     'メイリオ', 'Meiryo', 'ＭＳ ゴシック', sans-serif;
+  background-color: #fcfcfc;
 }
 
 * {
@@ -253,3 +254,12 @@ select {
 .picture-upload-area-right {
   margin-left: 20px;
 }
+
+.table-background {
+  background-color: #fff;
+}
+
+.table-border {
+  border: 1px solid #ebebeb;
+}
+

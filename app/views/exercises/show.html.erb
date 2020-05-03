@@ -7,22 +7,24 @@
     <h4 class="exercise-sub-title">オリジナル</h4>
   <% end %>
 
-  <div class="exercise-image-area mt-4">
-    <p><%= image_tag set_image(@exercise.icon, :default_exercise_icon), alt: @exercise.name, class: 'rect-100 mr-2' %></p>
-    <h3><%= @exercise.name %></h3>
-  </div>
-
-  <div class="my-5 exercise-explanation">
-    <div class="exercise-part ml-3 mr-5">
-      <h5><%= Exercise.human_attribute_name(:part) %></h5>
-      <p><%= @exercise.part_i18n %></p>
+  <div class="exercise-area">
+    <div class="exercise-image-area mt-4">
+      <p><%= image_tag set_image(@exercise.icon, :default_exercise_icon), alt: @exercise.name, class: 'rect-100 mr-2' %></p>
+      <h3><%= @exercise.name %></h3>
     </div>
 
-    <div class="exercise-category ml-5">
-      <h5><%= Exercise.human_attribute_name(:category) %></h5>
-      <p><%= @exercise.category_i18n %></p>
-    </div>
-  </div>
+    <div class="my-5 exercise-explanation">
+      <div class="exercise-part ml-3 mr-5">
+        <h5><%= Exercise.human_attribute_name(:part) %></h5>
+        <p><%= @exercise.part_i18n %></p>
+      </div><!-- /.exercise-part -->
+
+      <div class="exercise-category ml-5">
+        <h5><%= Exercise.human_attribute_name(:category) %></h5>
+        <p><%= @exercise.category_i18n %></p>
+      </div><!-- /.exercise-category -->
+    </div><!-- /.exercise-explanation -->
+  </div><!-- /.exercise-container -->
 
   <div class="mt-4">
     <h5><%= Exercise.human_attribute_name(:description) %></h5>
@@ -33,4 +35,4 @@
     <%= link_to '戻る', exercises_path, class: 'btn btn-outline-secondary' %>
     <%= link_to '編集', edit_exercise_path(@exercise), class: 'btn btn-outline-secondary' %>
   </div>
-</div><!-- /.exercise-content -->
+</div><!-- /.main-content -->

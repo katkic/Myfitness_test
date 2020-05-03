@@ -58,6 +58,7 @@
   height: 0;
   overflow: hidden;
   opacity: 0;
+  background-color: #fff;
 }
 
 /* アクティブなタブ */
@@ -71,7 +72,7 @@
   padding: 15px;
   opacity: 1;
   transition: .5s opacity;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ラジオボタン非表示 */
@@ -108,4 +109,10 @@
 
 .exercise-explanation {
   display: flex;
+}
+
+.exercise-area {
+  width: 100%;
+  border: 1px solid #CED4DA;
+  padding: 10px;
 }

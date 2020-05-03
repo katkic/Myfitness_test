@@ -12,18 +12,16 @@
 
 .workout-condition {
   border: 1px solid #ebebeb;
+  background: #fff;
   padding: 15px;
 }
 
 .workout-memo {
   border: 1px solid #ebebeb;
+  background: #fff;
   height: 10rem;
   padding: 15px;
   white-space: pre-wrap;
-}
-
-.workout-table {
-  border: 1px solid #ebebeb;
 }
 
 .workout-footer {
@@ -46,6 +44,7 @@
   &-logs {
     &-container {
       border: 1px solid #CED4DA;
+      background: #fff;
       border-radius: 5px;
       padding: 15px;
     }
