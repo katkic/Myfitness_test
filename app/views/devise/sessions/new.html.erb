@@ -1,6 +1,6 @@
 <div class='signinPage'>
   <div class='container'>
-    <h2 class="title">My fitnessにサインイン</h2>
+    <h2 class="title">My fitnessにログイン</h2>
     <div class="text-center m-3">or</div>
     <div class="text-center"><%= render "devise/shared/links" %></div>
     <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-5, new_user" }, local: true do |f| %>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="form-group text-center">
-        <%= f.submit "サインイン", class: "loginBtn" %>
+        <%= f.submit "ログイン", class: "loginBtn" %>
       </div>
     <% end %>
   </div>
