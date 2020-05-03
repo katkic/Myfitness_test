@@ -25,12 +25,14 @@
       </div><!-- /.form-group -->
 
       <%# ユーザーアイコン %>
-      <div class="form-group">
-        <i class="far fa-image fa-lg"></i>
-        <%= f.label :icon %><br>
+      <div class="form-group picture-upload-area mb-2">
         <p class="mb-2"><%= image_tag set_image(@profile.icon, :default_user_icon), alt: 'ユーザーアイコンのダミー', class: 'cover100', id: :user_icon_prev %></p>
-        <%= f.file_field :icon, accept: '.jpg, .png, .gif', id: :user_icon %>
-        <p class="mt-2"><%= f.check_box :remove_icon, id: :remove_icon %><label for="remove_icon">画像を削除する</label></p>
+        <div class="picture-upload-area-right">
+          <i class="far fa-image fa-lg"></i>
+          <%= f.label :icon %><br>
+          <%= f.file_field :icon, accept: '.jpg, .png, .gif', id: :user_icon %>
+          <p class="mt-2"><%= f.check_box :remove_icon, id: :remove_icon %><label for="remove_icon">画像を削除する</label></p>
+        </div><!-- /.picture-upload-area-right -->
       </div><!-- /.form-group -->
 
       <%# プロフィールの公開・非公開 %>
