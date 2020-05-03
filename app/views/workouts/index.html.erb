@@ -1,11 +1,10 @@
 <div class="workouts-container">
   <h1 class="page-title"><%= @exercise.name %></h1>
 
-  <nav class="navbar navbar-expand-sm my-3">
-    <ul class="navbar-nav">
-      <li class="nav-item"><%= link_to 'メニュー', menus_path, class: 'nav-link btn btn-default' %></li>
-      <li class="nav-item"><%= link_to 'グラフ', '#', class: 'nav-link btn btn-default' %></li>
-      <li class="nav-item"><%= link_to '新規作成', new_workout_path(exercise_id: @exercise.id), class: 'nav-link btn btn-primary text-white ml-5' %></li>
+  <nav>
+    <ul class="content-nav">
+      <li><%= link_to '戻る', menus_path, class: 'btn btn-outline-secondary' %></li>
+      <li><%= link_to '新規作成', new_workout_path(exercise_id: @exercise.id), class: 'nav-link btn btn-primary text-white' %></li>
     </ul>
   </nav>
 
@@ -30,12 +29,10 @@
             <td class="text-right pr-4"><%= Workout.get_max_weight(workout.exercise_logs) %></td>
             <td class="text-right pr-5"><%= Workout.get_one_rm_max(workout.exercise_logs) %></td>
             <td class="text-right pr-5"><%= Workout.get_total_weight(workout.exercise_logs) %></td>
-            <td><%= link_to '編集', edit_workout_path(workout) %></td>
-            <td><%= link_to '削除', workout_path(workout), method: :delete, data: { confirm: '削除してもよろしいですか？ '} %></td>
+            <td><%= link_to '編集', edit_workout_path(workout), class: 'btn btn-success btn-sm text-white' %></td>
           </tr>
         <% end %><!-- /@worktous.each do |menu| -->
-    </tr>
-    </tbody>
+      </tbody>
     </table>
   </div><!-- /.workoutWrapper -->
 </div><!-- /.col-6 mx-auto -->

@@ -1,13 +1,8 @@
 <div class="main-container">
-  <div class="workout_header mt-3">
-    <h1 class="page-title"><%= @exercise.name %></h1>
-  </div><!-- /.workout_header -->
+  <h1 class="page-title mb-3">記録の詳細</h1>
+  <h2 class="page-title"><%= @exercise.name %></h2>
 
-
-  <nav class="content-nav">
-    <%= link_to '戻る', workouts_path(id: @exercise.id), class: 'btn btn-outline-secondary' %>
-    <%= link_to 'メニュー', menus_path, class: 'btn btn-outline-secondary' %>
-  </nav>
+  <%= render 'partial/workout_nav' %>
 
   <div class="exercise_log_content">
     <p class="mb-2"><%= format_date_time(@workout.created_at) %></p>
@@ -26,7 +21,7 @@
         <% unless @exercise_logs.empty? %>
           <% @exercise_logs.each do |exercise_log|%>
             <tr>
-              <td class="pl-4"><%= exercise_log.set %></td>
+              <td class="pl-4"><%= exercise_log.set %> set</td>
               <td><%= exercise_log.weight %> kg</td>
               <td><%= exercise_log.rep %></td>
               <td><%= Workout.get_one_rm(exercise_log) %> kg</td>
@@ -54,9 +49,9 @@
     </div><!-- /.form-group -->
 
     <div class="workout-footer">
-        <%= link_to '編集', edit_workout_path(@workout), class: 'btn btn-success text-white' %>
         <%= link_to '削除', workout_path(@workout),
           method: :delete, data: { confirm: '削除してもよろしいですか？'}, class: 'btn btn-danger text-white' %>
+        <%= link_to '編集', edit_workout_path(@workout), class: 'btn btn-success text-white' %>
     </div><!-- /.workout-footer -->
   </div><!-- /.exercise_log_content -->
 </div><!--/.main-container -->
