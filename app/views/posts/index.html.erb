@@ -4,10 +4,9 @@
     <p class="mb-2">投稿はありません</p>
     <%= link_to '新規作成', new_post_path, class: 'btn btn-primary text-white' %>
   <% else %>
-    <div class="nav-menu">
-      <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
+    <div class="text-right">
       <%= link_to '新規作成', new_post_path, class: 'btn btn-primary text-white' %>
-    </div><!-- /.nav-menu -->
+    </div><!-- /.text-right -->
 
     <% @posts.each do |post| %>
       <% @like = current_user.likes.find_by(post_id: post.id) %>
