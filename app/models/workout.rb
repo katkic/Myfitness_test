@@ -63,9 +63,9 @@ class Workout < ApplicationRecord
     # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
     case exercise_log[:name]
     when 'スクワット', 'デッドリフト'
-      exercise_log[:weight] * (1 + (exercise_log[:rep] / 33.3)).floor(1)
+      (exercise_log[:weight] * (1 + (exercise_log[:rep] / 33.3))).floor(1)
     else
-      exercise_log[:weight] * (1 + (exercise_log[:rep] / 40.0)).floor(1)
+      (exercise_log[:weight] * (1 + (exercise_log[:rep] / 40.0))).floor(1)
     end
   end
 
