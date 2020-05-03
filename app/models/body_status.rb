@@ -7,4 +7,10 @@ class BodyStatus < ApplicationRecord
   mount_uploader :picture1, BodyStatusImageUploader
   mount_uploader :picture2, BodyStatusImageUploader
   mount_uploader :picture3, BodyStatusImageUploader
+
+  def self.get_bmi(height, weight)
+    return if height.blank?
+
+    (weight / (height / 100) ** 2).floor
+  end
 end

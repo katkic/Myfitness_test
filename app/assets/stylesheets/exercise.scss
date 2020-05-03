@@ -58,6 +58,7 @@
   height: 0;
   overflow: hidden;
   opacity: 0;
+  background-color: #fff;
 }
 
 /* アクティブなタブ */
@@ -71,7 +72,7 @@
   padding: 15px;
   opacity: 1;
   transition: .5s opacity;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ラジオボタン非表示 */
@@ -81,4 +82,37 @@
 
 .search-name-field {
   width: 60%;
+}
+
+.exercise-sub-title {
+  border: 1px solid #000;
+  border-radius: 25px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.exercise-image-area {
+  display: flex;
+
+  h3 {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+}
+
+.exercise-description {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #CED4DA;
+}
+
+.exercise-explanation {
+  display: flex;
+}
+
+.exercise-area {
+  width: 100%;
+  border: 1px solid #CED4DA;
+  padding: 10px;
 }

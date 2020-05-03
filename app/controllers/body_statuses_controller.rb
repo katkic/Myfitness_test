@@ -1,5 +1,6 @@
 class BodyStatusesController < ApplicationController
   before_action :set_body_status, only: %i[show edit update destroy]
+  before_action :set_height, only: %i[index show]
 
   def index
     @body_statuses = BodyStatus.where(user_id: current_user.id).order(created_at: :desc)
@@ -57,5 +58,11 @@ class BodyStatusesController < ApplicationController
 
   def set_body_status
     @body_status = BodyStatus.find(params[:id])
+  end
+
+  def set_height
+    return if current_user.profile.height.blank?
+
+    @height = current_user.profile.height
   end
 end

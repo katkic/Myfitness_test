@@ -7,7 +7,7 @@
 
     <div class="user-profile-container">
       <div class="profile-nav">
-        <p>プロフィール設定 <% @profile.public_flag ? '公開' : '非公開' %>公開</p>
+        <p>プロフィール設定 <%= @profile.public_flag ? '公開' : '非公開' %></p>
 
         <% if @user.id == current_user.id %>
           <%= link_to 'アカウント編集', edit_user_registration_path %>
@@ -32,7 +32,7 @@
           <% end %>
 
           <% if @user.id == current_user.id %>
-            <p><%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-outline-secondary btn-sm', method: :delete %></p>
+            <p><%= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-outline-secondary btn-sm', method: :delete %></p>
           <% end %>
         </div><!-- /.user-info -->
       </div><!-- /.user-profile -->

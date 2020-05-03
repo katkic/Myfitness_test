@@ -1,10 +1,4 @@
 <div class="main-container">
-  <div>
-    <h1>トレーニング種目作成</h1>
-    <div>
-    <%= link_to '< 戻る', :back, class: 'btn btn-link' %>
-    <%= link_to '一覧 >', exercises_path, class: 'btn btn-link' %>
-  </div>
+  <h1 class="page-title mb-4">トレーニング種目作成</h1>
   <%= render 'partial/exercise_form', exercise: @exercise %>
-  </div>
 </div>

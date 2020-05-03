@@ -5,7 +5,7 @@ ja:
     attributes:
       exercise:
         id: ID
-        name: 名称
+        name: 種目名
         part: 部位
         category: カテゴリー
         description: 説明

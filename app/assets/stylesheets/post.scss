@@ -14,7 +14,17 @@
   margin-bottom: 10px;
 }
 
-.main-content {
+.post-main-content {
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.post-picture-content {
+  padding: 15px;
+  background-color: #fff;
   border: 1px solid #ebebeb;
   border-radius: 3px;
   margin-bottom: 20px;
@@ -92,10 +102,10 @@
 .post-comment {
   padding: 15px;
   border: 1px solid #ebebeb;
+  background: #fff;
   border-radius: 3px;
 }
 .comment-content {
-  margin-top: 1rem;
   margin-left: 65px;
   white-space: pre-wrap;
 }

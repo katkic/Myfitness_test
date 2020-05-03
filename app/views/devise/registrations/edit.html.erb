@@ -1,7 +1,9 @@
-<div class="main-container">
+<div class="account-container">
   <h2 class="page-title">アカウント編集</h2>
-
   <h3 class="text-center mt-3"><%= current_user.name %></h3>
+
+  <%= link_to "戻る", :back, class: 'btn btn-outline-secondary mb-3' %>
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -39,11 +41,10 @@
       <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
     </div>
 
-    <div class="actions two-submit mb-3">
+    <div class="actions mb-3 text-right">
       <%= f.submit "更新する", class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "削除してもよろしいですか？" }, method: :delete, class: 'btn btn-danger' %></p>
-  <%= link_to "戻る", :back %>
-</div><!-- /.container -->
+  <p class="account-delete"><%= link_to "アカウント削除", registration_path(resource_name), data: { confirm: "削除してもよろしいですか？" }, method: :delete, class: 'btn btn-danger text-white' %></p>
+</div><!-- /.main-container -->
