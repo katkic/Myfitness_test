@@ -25,25 +25,11 @@ $(document).on('turbolinks:load', function () {
     getVisibleFields().each(function (index) {
       const weight = $(this).find('.weight').val();
       const rep = $(this).find('.rep').val();
-      // console.log('weight: ' + weight);
-      // console.log('rep: ' + rep)
 
-      if (weight && rep) {
-        flagArray.push(true);
-        // console.log('true');
-        // console.log(flagArray);
-      } else {
-        flagArray.push(false);
-        // console.log('false');
-        // console.log(flagArray);
-      }
+      weight && rep ? flagArray.push(true) : flagArray.push(false);
 
       // weight, repが共に入力されているfieldがあるか判定し、submitの有効、無効の切り替え
-      if (flagArray.includes(true)) {
-        submitBtn.prop('disabled', false);
-      } else {
-        submitBtn.prop('disabled', true);
-      }
+      flagArray.includes(true) ? submitBtn.prop('disabled', false) : submitBtn.prop('disabled', true);
     });
   }
 
