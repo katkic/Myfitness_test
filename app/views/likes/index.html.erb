@@ -1,16 +1,20 @@
-<div class="post-container">
+<div class="main-container">
   <div class="page-title mb-3">
-    <h1>いいねしたアカウント</h1>
+    <h1>いいねしたユーザー</h1>
   </div><!-- /.page-title -->
 
-  <% @like_users.each do |like_user| %>
-    <div class="profile-content">
-      <div class="profile-header">
-        <!-- ユーザー情報 -->
-        <%= render 'partial/user_name_and_icon', user: like_user %>
-        <%= render 'partial/follow_form', user: like_user %>
-      </div><!-- /.profile-header -->
-      <%= render 'partial/self_introduction', user: like_user %>
-    </div><!-- /.profile-content -->
-  <% end %>
-</div><!-- /.like-container -->
+  <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
+
+  <div class="mt-4">
+    <% @like_users.each do |like_user| %>
+      <div class="profile-content">
+        <div class="profile-header">
+          <!-- ユーザー情報 -->
+          <%= render 'partial/user_name_and_icon', user: like_user %>
+          <%= render 'partial/follow_form', user: like_user unless like_user == current_user %>
+        </div><!-- /.profile-header -->
+        <%= render 'partial/self_introduction', user: like_user %>
+      </div><!-- /.profile-content -->
+    <% end %>
+  </div>
+</div><!-- /.main-container -->

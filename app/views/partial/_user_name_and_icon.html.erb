@@ -1,5 +1,5 @@
 <%= link_to profile_path(user) do %>
-  <p><%= image_tag set_icon(user.profile), alt: user.name, class: 'cover50 mr-2' %></p>
+  <p><%= image_tag set_image(user.profile.icon, 'default_user_icon.png'), alt: user.name, class: 'cover50 mr-2' %>
 <% end %>
 <%= link_to profile_path(user) do %>
   <p class="post-user profile-name"><%= user.name %></p>
