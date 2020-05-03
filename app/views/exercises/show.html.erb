@@ -1,29 +1,24 @@
-<div class="exercise-container col-6 mx-auto mt-3">
-<h1>トレーニング種目詳細</h1>
-  <div class="my-4">
-    <%= link_to '< 戻る', :back, class: 'btn btn-link' %>
-    <%= link_to '一覧', exercises_path, class: 'btn btn-link' %>
-    <%= link_to '編集 >', edit_exercise_path(@exercise), class: 'btn btn-link' %>
-  </div>
+<div class="main-container">
+  <h1 class="page-title mb-4">トレーニング種目詳細</h1>
 
   <% if @exercise.preset %>
-    <h4>プリセット</h4>
+    <h4 class="exercise-sub-title">プリセット</h4>
   <% else %>
-    <h4>オリジナル</h4>
+    <h4 class="exercise-sub-title">オリジナル</h4>
   <% end %>
 
-  <div class="title-area mt-4 clearfix">
+  <div class="exercise-image-area mt-4">
     <p><%= image_tag set_image(@exercise.icon, :default_exercise_icon), alt: @exercise.name, class: 'rect-100 mr-2' %></p>
     <h3><%= @exercise.name %></h3>
   </div>
 
-  <div class="my-5">
-    <div class="exercise-part">
+  <div class="my-5 exercise-explanation">
+    <div class="exercise-part ml-3 mr-5">
       <h5><%= Exercise.human_attribute_name(:part) %></h5>
       <p><%= @exercise.part_i18n %></p>
     </div>
 
-    <div>
+    <div class="exercise-category ml-5">
       <h5><%= Exercise.human_attribute_name(:category) %></h5>
       <p><%= @exercise.category_i18n %></p>
     </div>
@@ -31,6 +26,11 @@
 
   <div class="mt-4">
     <h5><%= Exercise.human_attribute_name(:description) %></h5>
-    <p><%= @exercise.description %></p>
+    <p class="exercise-description"><%= @exercise.description %></p>
+  </div>
+
+  <div class="my-4 two-submit">
+    <%= link_to '戻る', exercises_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to '編集', edit_exercise_path(@exercise), class: 'btn btn-outline-secondary' %>
   </div>
 </div><!-- /.exercise-content -->

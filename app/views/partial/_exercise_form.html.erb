@@ -1,4 +1,5 @@
-<%= form_with model: exercise, local: true do |f| %>
+<div class="mt-4">
+  <%= form_with model: exercise, local: true do |f| %>
     <% if exercise.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(exercise.errors.count, "") %> 件のエラーがあります</h2>
@@ -12,16 +13,18 @@
     <% end %>
 
     <%# アイコン %>
-    <div class="form-group">
-      <i class="far fa-image fa-lg"></i>
-      <%= f.label :icon %><br>
+    <div class="form-group picture-upload-area mb-2">
       <p class="mb-2"><%= image_tag set_image(exercise.icon, :default_exercise_icon), id: :exercise_icon_prev, class: 'rect-100', alt: '写真1' %></p>
-      <%= f.file_field :con, id: :exercise_icon, accept: '.jpg, .png, .gif' %>
-      <%= f.hidden_field :icon_cache %>
-      <p class="mt-2"><label><%= f.check_box :remove_icon %>画像を削除する</label></p>
+      <div class="picture-upload-area-right">
+        <i class="far fa-image fa-lg"></i>
+        <%= f.label :icon %>
+        <%= f.file_field :con, id: :exercise_icon, accept: '.jpg, .png, .gif' %>
+        <%= f.hidden_field :icon_cache %>
+        <p class="mt-2"><label><%= f.check_box :remove_icon %>画像を削除する</label></p>
+      </div><!-- /.picture-upload-area-right -->
     </div><!-- /.form-group -->
 
-    <%# 名称 %>
+    <%# 種目名 %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control', id: 'exercise_name' %>
@@ -42,8 +45,12 @@
     <%# 説明 %>
     <div class="form-group">
       <%= f.label :description %>
-      <%= f.text_area :description, class: 'form-control', id: 'exercise_description' %>
+      <%= f.text_area :description, size: "0x5", class: 'form-control', id: 'exercise_description' %>
     </div><!-- /.form-group -->
 
-    <%= f.submit nil, class: 'btn btn-primary' %>
+    <div class="form-group two-submit">
+      <%= link_to '戻る', exercises_path, class: 'btn btn-outline-secondary' %>
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div><!-- /.form-group -->
   <% end %>
+</div>
