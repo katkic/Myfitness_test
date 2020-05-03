@@ -1,12 +1,5 @@
-<div class="container">
-  <h1 class="my-3">体重・体脂肪</h1>
-
-  <nav class="navbar navbar-expand-sm my-3">
-    <ul class="navbar-nav">
-      <li class="nav-item"><%= link_to '一覧', body_statuses_path(@body_status), class: 'nav-link btn btn-default' %></li>
-      <li class="nav-item"><%= link_to 'トレーニングメニュー', menus_path, class: 'nav-link btn btn-default' %></li>
-    </ul>
-  </nav>
+<div class="container mt-3">
+  <h1 class="page-title mb-4">体重記録の詳細</h1>
 
   <table class="table table-hover">
     <tr>
@@ -15,20 +8,41 @@
     </tr>
     <tr>
       <th>体重</th>
-      <td><%= @body_status.body_weight %></td>
+      <td><%= @body_status.body_weight %> kg</td>
     </tr>
     <tr>
       <th>体脂肪</th>
-      <td><%= @body_status.body_fat %></td>
+      <td><%= @body_status.body_fat %> %</td>
+    </tr>
+    <tr>
+      <th>BMI</th>
+      <% if @height %>
+        <td><%= BodyStatus.get_bmi(@height, @body_status.body_weight) %></td>
+      <% else %>
+        <td>-</td>
+      <% end %>
+    </tr>
+    <tr>
+      <th>身長</th>
+      <% if @height %>
+        <td><%= @height %> cm</td>
+      <% else %>
+        <td>身長が未入力です(プロフィール編集から入力してください)</td>
+      <% end %>
     </tr>
   </table><!-- /.table table-hover -->
 
   <div class="image-area">
-    <p class="mb-2"><%= image_tag @body_status.picture1.url, alt: '写真1' if @body_status.picture1 && @body_status.picture1.url %></p>
-    <p class="mb-2"><%= image_tag @body_status.picture2.url, alt: '写真2' if @body_status.picture2 && @body_status.picture2.url %></p>
-    <p class="mb-2"><%= image_tag @body_status.picture3.url, alt: '写真3' if @body_status.picture3 && @body_status.picture3.url %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture1.url, alt: '写真1' if @body_status.picture1 %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture2.url, alt: '写真2' if @body_status.picture2 %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture3.url, alt: '写真3' if @body_status.picture3 %></p>
   </div><!-- /.image-area -->
 
-  <%= link_to '編集', edit_body_status_path(@body_status), class: 'btn btn-success text-white' %>
-  <%= link_to '削除', body_status_path(@body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn btn-danger text-white' %>
+  <nav>
+    <ul class="content-nav">
+      <%= link_to '戻る', body_statuses_path, class: 'btn btn-outline-secondary' %>
+      <%= link_to '削除', body_status_path(@body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn btn-danger text-white' %>
+      <%= link_to '編集', edit_body_status_path(@body_status), class: 'btn btn-success text-white' %>
+    </ul>
+  </nav>
 </div><!-- /.container -->
