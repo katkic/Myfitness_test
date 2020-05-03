@@ -6,5 +6,5 @@ ja:
       menu:
         id: ID
         user: ユーザー
-        name: 名称
+        name: メニュー名
         interval: インターバル日数
