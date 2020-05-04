@@ -17,6 +17,15 @@ module Myfitness
     config.generators do |g|
       g.assets false
       g.helper false
+      g.test_framework :rspec,
+        model_specs: true,
+        fixtures: true,
+        view_specs: false,
+        helper_secs: false,
+        routing_specs: false,
+        controller_specs: false,
+        request_specs: false
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
     config.beginning_of_week = :sunday
