@@ -8,4 +8,5 @@ class Post < ApplicationRecord
   has_many :comment_users, through: :comments, source: :user
 
   mount_uploader :picture, PostImageUploader
+  paginates_per 15
 end

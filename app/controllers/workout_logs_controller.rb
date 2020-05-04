@@ -2,19 +2,12 @@ class WorkoutLogsController < ApplicationController
   before_action :set_user
 
   def index
-    @workout_logs = @user.workouts.order(created_at: :desc)
+    @workout_logs = @user.workouts.order(created_at: :desc).page(params[:page])
   end
 
   def search
-    @search_params = workout_logs_search_params
-
-    @workout_logs = if @search_params[:name].blank?
-      @user.workouts.order(created_at: :desc)
-    else
-      @exercise = Exercise.find_by(name: @search_params[:name])
-      @exercise.workouts
-    end
-
+    search_params = workout_logs_search_params
+    @workout_logs = Workout.search_workout(search_params).page(params[:page])
     render :index
   end
 

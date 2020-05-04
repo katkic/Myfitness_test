@@ -35,4 +35,9 @@
       </tbody>
     </table>
   </div><!-- /.workoutWrapper -->
-</div><!-- /.col-6 mx-auto -->
+
+  <div class="mt-3">
+    <%= paginate(@workouts) %>
+    <%= page_entries_info(@workouts) %>
+  </div><!-- /.mt-3 -->
+</div><!-- /.workout-container -->

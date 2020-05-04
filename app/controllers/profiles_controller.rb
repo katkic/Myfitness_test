@@ -4,10 +4,11 @@ class ProfilesController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).order(id: :asc)
+    @users = @q.result(distinct: true).order(id: :asc).page(params[:page]).per(20)
   end
 
   def show
+    @posts = @user.posts.page(params[:page]).per(5)
     @post_count = @user.posts.count
     @following_count = @user.following.count
     @followers_count = @user.followers.count

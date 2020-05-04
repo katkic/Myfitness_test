@@ -19,4 +19,9 @@
       <% end %>
     <% end %>
   </div><!-- /.profiles-container -->
+
+  <div class="mt-3">
+    <%= paginate(@users) %>
+    <%= page_entries_info(@users) %>
+  </div><!-- /.mt-3 -->
 </div><!-- /.main-container -->
