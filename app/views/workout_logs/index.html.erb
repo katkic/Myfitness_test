@@ -41,4 +41,9 @@
       <% end %>
     </tbody>
   </table>
+
+  <div>
+    <%= paginate(@workout_logs) %>
+    <%= page_entries_info(@workout_logs) %>
+  </div>
 </div><!-- /.workout_logs-container -->

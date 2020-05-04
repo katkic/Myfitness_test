@@ -13,6 +13,8 @@ class Workout < ApplicationRecord
     very_bad:  5
   }
 
+  paginates_per 5
+
   def self.get_set(exercise_logs)
     return 0 if exercise_logs.empty?
 
@@ -70,4 +72,14 @@ class Workout < ApplicationRecord
   end
 
   private_class_method :choose_bench_or_squat, :once_or_more
+
+  scope :search_workout, -> (search_params) do
+    if search_params[:name].blank?
+      order(created_at: :desc)
+    else
+      exercise = Exercise.find_by(name: search_params[:name])
+      where(exercise_id: exercise.id).order(created_at: :desc)
+    end
+  end
+
 end
