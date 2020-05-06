@@ -4,7 +4,7 @@
         <tr>
           <td class="align-middle"><%= f.check_box :exercise_ids, {
               multiple: true, checked: @menu.exercises.find_by(id: exercise.id).present?, include_hidden: false
-            }, exercise[:id], id: exercise.id %></td>
+            }, exercise[:id] %></td>
           <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= image_tag set_image(exercise.icon, 'default_exercise_icon'), alt: 'トレーニングアイコン', class: 'rect-50' %></label></td>
           <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.name %></label></td>
           <td class="align-middle"><label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.part_i18n %></label></td>
