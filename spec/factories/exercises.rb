@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :exercise1, class: Exercise do
+  factory :exercise do
     name { 'ベンチプレス' }
     part { 1 }
     category { 1 }
