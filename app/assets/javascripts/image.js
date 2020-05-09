@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function () {
   // 新規作成・編集画面で、file_fieldに選択した画像をプレビューで確認できるようにする
   function readURL(input) {
-    let bodyPicId = '#' + input.id + '_prev';
+    var bodyPicId = '#' + input.id + '_prev';
 
     if (input.files && input.files[0]) {
       var reader = new FileReader();
