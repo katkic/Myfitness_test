@@ -15,7 +15,7 @@
       </div><!-- /.profile-nav -->
 
       <div class="user-profile">
-        <p><%= image_tag set_image(@profile.icon, :default_user_icon), alt: @user.name, class: 'cover100' %></p>
+        <p><%= image_tag set_image(@profile.icon, 'default_user_icon.png'), alt: @user.name, class: 'cover100' %></p>
         <div class="user-info">
           <p class="user-name"><%= @user.name %></p>
           <% if @user.id == current_user.id %>
