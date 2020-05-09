@@ -28,7 +28,7 @@
 
     <%# 写真1 %>
     <div class="form-group mb-2 picture-upload-area">
-      <p class="mb-2"><%= image_tag set_image(body_status.picture1, :default_common_image), id: :body_picture1_prev, class: 'pic_prev', alt: '写真1' %></p>
+      <p class="mb-2"><%= image_tag set_image(body_status.picture1, 'default_common_image.png'), id: :body_picture1_prev, class: 'pic_prev', alt: '写真1' %></p>
       <div class="picture-upload-area-right">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :picture1 %>
@@ -52,7 +52,7 @@
 
     <%# 写真3 %>
     <div class="form-group picture-upload-area mb-2">
-      <p class="mb-2"><%= image_tag set_image(body_status.picture3, :default_common_image), id: :body_picture3_prev, class: 'pic_prev', alt: '写真3' %></p>
+      <p class="mb-2"><%= image_tag set_image(body_status.picture3, 'default_common_image.png'), id: :body_picture3_prev, class: 'pic_prev', alt: '写真3' %></p>
       <div class="picture-upload-area-right">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :picture3 %><br>
