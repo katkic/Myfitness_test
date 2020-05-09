@@ -40,7 +40,7 @@
 
     <%# 写真2 %>
     <div class="form-group mb-2 picture-upload-area">
-      <p class="mb-2"><%= image_tag set_image(body_status.picture2, :default_common_image), id: :body_picture2_prev, class: 'pic_prev', alt: '写真2' %></p>
+      <p class="mb-2"><%= image_tag set_image(body_status.picture2, 'default_common_image.png'), id: :body_picture2_prev, class: 'pic_prev', alt: '写真2' %></p>
       <div class="picture-upload-area-right">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :picture2 %>
