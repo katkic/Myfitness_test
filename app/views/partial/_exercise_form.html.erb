@@ -14,7 +14,7 @@
 
     <%# アイコン %>
     <div class="form-group picture-upload-area mb-2">
-      <p class="mb-2"><%= image_tag set_image(exercise.icon, :default_exercise_icon), id: :exercise_icon_prev, class: 'rect-100', alt: '写真1' %></p>
+      <p class="mb-2"><%= image_tag set_image(exercise.icon, 'default_exercise_icon.png'), id: :exercise_icon_prev, class: 'rect-100', alt: '写真1' %></p>
       <div class="picture-upload-area-right">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :icon %>

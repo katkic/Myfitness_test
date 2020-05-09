@@ -31,7 +31,7 @@
 
         <% menu.exercises.each do |exercise| %>
           <div class="menu-content-index-item">
-            <%= image_tag set_image(exercise.icon, :default_exercise_icon), alt: 'トレーニングアイコン', class: 'rect-50 mr-3' %>
+            <%= image_tag set_image(exercise.icon, 'default_exercise_icon.png'), alt: 'トレーニングアイコン', class: 'rect-50 mr-3' %>
               <%= link_to exercise.name, workouts_path(id: exercise.id), class: 'menu-content-index-item-name' %>
           </div>
         <% end %>
