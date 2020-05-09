@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to profile_path(current_user)
+      redirect_to profile_path(current_user), notice: "「#{@profile.user.name}」のプロフィールを更新しました"
     else
       render :edit
     end

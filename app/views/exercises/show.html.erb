@@ -33,6 +33,7 @@
 
   <div class="my-4 two-submit">
     <%= link_to '戻る', exercises_path, class: 'btn btn-outline-secondary' %>
-    <%= link_to '編集', edit_exercise_path(@exercise), class: 'btn btn-outline-secondary' %>
+    <%= link_to '削除', exercise_path, method: :delete, data: { confirm: '本当に削除してもよろしいですか?' }, class: 'btn btn-danger text-white' %>
+    <%= link_to '編集', edit_exercise_path(@exercise), class: 'btn btn-success text-white' %>
   </div>
 </div><!-- /.main-content -->

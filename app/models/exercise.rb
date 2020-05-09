@@ -23,7 +23,7 @@ class Exercise < ApplicationRecord
 
   enum category: {
     free_weight: 1,
-    machine:     2,
+    machine:     2
   }
 
   scope :preset, -> { where(preset: true) }
@@ -39,7 +39,6 @@ class Exercise < ApplicationRecord
     end
   end
 
-  scope :preset_is, -> { where(preset: true) }
   scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }
   scope :part_is, -> (part) { where(part: part) if part.present? }
   scope :category_is, -> (category) { where(category: category) if category.present? }
