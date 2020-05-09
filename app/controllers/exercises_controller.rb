@@ -17,7 +17,7 @@ class ExercisesController < ApplicationController
     @exercise = current_user.exercises.build(exercise_params)
 
     if @exercise.save
-      redirect_to exercise_path(@exercise), notice: 'トレーニング種目を登録しました'
+      redirect_to exercise_path(@exercise), notice: "トレーニング種目「#{@exercise.name}」を登録しました"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class ExercisesController < ApplicationController
 
   def update
     if @exercise.update(exercise_params)
-      redirect_to exercise_path(@exercise), notice: 'トレーニング種目を更新しました'
+      redirect_to exercise_path(@exercise), notice: "トレーニング種目「#{@exercise.name}」を編集しました"
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise.destroy
-    redirect_to exercises_path, notice: 'トレーニング種目を削除しました'
+    redirect_to exercises_path, notice: "トレーニング種目「#{@exercise.name}」を削除しました"
   end
 
   def search

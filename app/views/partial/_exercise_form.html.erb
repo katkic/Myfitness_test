@@ -18,7 +18,7 @@
       <div class="picture-upload-area-right">
         <i class="far fa-image fa-lg"></i>
         <%= f.label :icon %>
-        <%= f.file_field :con, id: :exercise_icon, accept: '.jpg, .png, .gif' %>
+        <%= f.file_field :icon, id: :exercise_icon, accept: '.jpg, .png, .gif' %>
         <%= f.hidden_field :icon_cache %>
         <p class="mt-2"><label><%= f.check_box :remove_icon %>画像を削除する</label></p>
       </div><!-- /.picture-upload-area-right -->
@@ -39,7 +39,7 @@
     <%# カテゴリー %>
     <div class="form-group">
       <%= f.label :category %><br>
-      <%= f.select :category, Exercise.categories_i18n.invert, { include_blank: '選択してください' }, class: 'form-control', id: 'esercise_' %>
+      <%= f.select :category, Exercise.categories_i18n.invert, { include_blank: '選択してください' }, class: 'form-control', id: 'exercise_category' %>
     </div><!-- /.form-group -->
 
     <%# 説明 %>
