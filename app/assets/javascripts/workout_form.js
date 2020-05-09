@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function () {
   }
 
   // 新規作成と編集でsubmitの初期状態を切り替え
-  const submitBtn = $('#workout-submit-btn');
+  var submitBtn = $('#workout-submit-btn');
   // console.log(submitBtn.val());
   submitBtn.val() === '登録する' ? submitBtn.prop('disabled', true) : submitBtn.prop('disabled', false)
 
@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function () {
     setFieldNum();
     checkFieldNum();
 
-    const $link = $(e.currentTarget.activeElement);
+    var $link = $(e.currentTarget.activeElement);
 
     if (!$link.data('limit')) {
       return;
@@ -68,7 +68,7 @@ $(document).on('turbolinks:load', function () {
     setFieldNum();
     checkFieldNum();
 
-    const $link = $(e.target).siblings('a.add_nested_fields');
+    var $link = $(e.target).siblings('a.add_nested_fields');
 
     if (!$link.data('limit')) {
       return;
