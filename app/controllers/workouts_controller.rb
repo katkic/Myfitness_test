@@ -21,7 +21,7 @@ class WorkoutsController < ApplicationController
     @workout = current_user.workouts.build(workout_params)
 
     if @workout.save
-      redirect_to workout_path(@workout), notice: "トレーニング「#{self.class.helpers.format_date_time(@workout.created_at)}」を記録しました"
+      redirect_to workout_path(@workout), notice: "トレーニング「#{@workout.exercise.name} #{self.class.helpers.format_date_time(@workout.created_at)}」を記録しました"
     else
       render :new
     end
@@ -32,7 +32,7 @@ class WorkoutsController < ApplicationController
 
   def update
     if @workout.update(workout_params)
-      redirect_to workout_path(@workout), notice: "トレーニング「#{self.class.helpers.format_date_time(@workout.created_at)}」を更新しました"
+      redirect_to workout_path(@workout), notice: "トレーニング「#{@workout.exercise.name} #{self.class.helpers.format_date_time(@workout.created_at)}」を更新しました"
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class WorkoutsController < ApplicationController
 
   def destroy
     @workout.destroy
-    redirect_to workouts_path(id: @workout.exercise.id), notice: "「トレーニング #{self.class.helpers.format_date_time(@workout.created_at)}」を削除しました"
+    redirect_to workouts_path(id: @workout.exercise.id), notice: "トレーニング 「#{@workout.exercise.name} #{self.class.helpers.format_date_time(@workout.created_at)}」を削除しました"
   end
 
   private

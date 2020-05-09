@@ -20,11 +20,11 @@ $(document).on('turbolinks:load', function () {
   // weight, repのバリデーション
   // weightとrepの値が共に入力されている場合、submitできる
   function checkFieldNum() {
-    const flagArray = [];  // 判定用配列
+    var flagArray = [];  // 判定用配列
 
     getVisibleFields().each(function (index) {
-      const weight = $(this).find('.weight').val();
-      const rep = $(this).find('.rep').val();
+      var weight = $(this).find('.weight').val();
+      var rep = $(this).find('.rep').val();
 
       weight && rep ? flagArray.push(true) : flagArray.push(false);
 
