@@ -13,4 +13,25 @@ class BodyStatus < ApplicationRecord
 
     (weight / (height / 100) ** 2).floor
   end
+
+  def self.get_exercise_part_count(workouts)
+    exercise_part = Hash.new { 0 }
+    workouts.each do |workout|
+      part = workout.exercise.part
+      case part
+      when part
+        exercise_part["#{part}"] += 1
+      end
+    end
+
+    exercise_part
+  end
+
+  scope :get_body_weight_records, -> (current_user_id) do
+    where(user_id: current_user_id).pluck(:created_at, :body_weight)
+  end
+
+  scope :get_body_fat_records, -> (current_user_id) do
+    where(user_id: current_user_id).pluck(:created_at, :body_fat)
+  end
 end
