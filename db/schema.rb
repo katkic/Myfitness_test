@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_135951) do
   create_table "menus", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", default: "", null: false
-    t.string "interval", default: "2", null: false
+    t.integer "interval", default: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_menus_on_user_id"
