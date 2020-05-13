@@ -67,7 +67,9 @@ class Workout < ApplicationRecord
   def self.choose_bench_or_squat(exercise_log)
     # 1RM = 使用重量 × {1 + (持ち上げた回数 ÷ 40)}
     # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
-    case exercise_log[:name]
+    exercise_name = exercise_log.workout.exercise.name
+
+    case exercise_name
     when 'スクワット', 'デッドリフト'
       (exercise_log[:weight] * (1 + (exercise_log[:rep] / 33.3))).floor(1)
     else
