@@ -22,12 +22,12 @@
           </h2><!-- /.list_header_title -->
 
           <div class="menu-content-header-action">
-            <%= link_to content_tag(:i, '', class: 'fas fa-pen'), edit_menu_path(menu) %>
-            <%= link_to content_tag(:i, '', class: 'fas fa-trash'), menu_path(menu), method: :delete, data: { confirm: "#{menu.name}を削除してよろしいですか？" } %>
+            <%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_menu_path(menu) %>
+            <%= link_to content_tag(:i, '', class: 'fas fa-trash menu-icon'), menu_path(menu), method: :delete, data: { confirm: "#{menu.name}を削除してよろしいですか？" } %>
           </div>
         </div><!-- /.menu_header -->
 
-        <p class="mb-2">インターバル : <%= menu.interval %>日</p>
+        <p class="mb-2">インターバル : <%= menu.interval_i18n %>日</p>
 
         <% menu.exercises.each do |exercise| %>
           <div class="menu-content-index-item">

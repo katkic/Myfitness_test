@@ -33,9 +33,9 @@
   </table><!-- /.table table-hover -->
 
   <div class="image-area">
-    <p class="mb-2"><%= image_tag @body_status.picture1.url, alt: '写真1' if @body_status.picture1 %></p>
-    <p class="mb-2"><%= image_tag @body_status.picture2.url, alt: '写真2' if @body_status.picture2 %></p>
-    <p class="mb-2"><%= image_tag @body_status.picture3.url, alt: '写真3' if @body_status.picture3 %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture1.url, alt: '写真1' if @body_status.picture1.present? %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture2.url, alt: '写真2' if @body_status.picture2.present? %></p>
+    <p class="mb-2"><%= image_tag @body_status.picture3.url, alt: '写真3' if @body_status.picture3.present? %></p>
   </div><!-- /.image-area -->
 
   <nav>

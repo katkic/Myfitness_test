@@ -58,7 +58,7 @@ RSpec.describe '体重・体脂肪記録機能', type: :model do
     end
   end
 
-  describe 'MBIの計算 #BodyStatu.get_bmi' do
+  describe 'MBIの計算 #BodyStatus.get_bmi' do
     before do
       @height = 175.0
       @weight = 69.1

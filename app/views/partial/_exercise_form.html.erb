@@ -32,13 +32,13 @@
 
     <%# 部位 %>
     <div class="form-group">
-      <%= f.label :part %><br>
+      <%= f.label :part %>
       <%= f.select :part, Exercise.parts_i18n.invert, { include_blank: '選択してください' }, class: 'form-control', id: 'exercise_part' %>
     </div><!-- /.form-group -->
 
     <%# カテゴリー %>
     <div class="form-group">
-      <%= f.label :category %><br>
+      <%= f.label :category %>
       <%= f.select :category, Exercise.categories_i18n.invert, { include_blank: '選択してください' }, class: 'form-control', id: 'exercise_category' %>
     </div><!-- /.form-group -->
 

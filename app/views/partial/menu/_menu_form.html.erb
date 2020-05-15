@@ -1,4 +1,4 @@
-<%= form_with model: menu, local: true do |f| %>
+<%= form_with model: menu, local: true , id: 'menu-form' do |f| %>
     <% if menu.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(menu.errors.count, "") %> 件のエラーがあります</h2>
@@ -18,7 +18,7 @@
 
     <div class="form-group">
       <%= f.label :interval %>
-      <%= f.select :interval, [1, 2, 3, 4, 5], { include_brank: '選択してください' }, class: 'form-control', id: 'menu_interval' %>
+      <%= f.select :interval, options_for_select(Menu.intervals_i18n.invert, selected: :two), { include_brank: '選択してください' }, class: 'form-control', id: 'menu_interval' %>
     </div><!-- /.form-group -->
 
     <div class="tab-wrap">
