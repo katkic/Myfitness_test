@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function () {
 
   // fieldのlengthを取得
   function getFormFieldLength() {
-    return getVisibleFields().length
+    return getVisibleFields().length;
   }
 
   // 動的に追加されたフォームにset数を表示
@@ -33,32 +33,39 @@ $(document).on('turbolinks:load', function () {
     });
   }
 
+  function doValidation() {
+    $(".weight").on("input", checkFieldNum);
+    $(".rep").on("input", checkFieldNum);
+  }
+
   // 新規作成と編集でsubmitの初期状態を切り替え
   var submitBtn = $('#workout-submit-btn');
   // console.log(submitBtn.val());
-  submitBtn.val() === '登録する' ? submitBtn.prop('disabled', true) : submitBtn.prop('disabled', false)
+  submitBtn.val() === '登録する' ? submitBtn.prop('disabled', true) : submitBtn.prop('disabled', false);
 
   // ページ表示時にset数を表示する
   setFieldNum();
 
   // weightとrepのバリデーションを実施
-  $('.weight').on('input', checkFieldNum);
-  $('.rep').on('input', checkFieldNum);
+  doValidation();
 
   // 動的に表示するフォームの数を制限
   // 制限数は、f.link_to_add メソッドに data: { limit: 10 }で指定
   $(document).on('nested:fieldAdded', function (e) {
     setFieldNum();
     checkFieldNum();
+    doValidation();
 
     var $link = $(e.currentTarget.activeElement);
 
     if (!$link.data('limit')) {
       return;
     }
+
     if (getFormFieldLength() >= $link.data('limit')) {
       $link.hide();
     }
+
     if (getFormFieldLength() > 1) {
       $('.remove-link').show();
     }
@@ -67,15 +74,18 @@ $(document).on('turbolinks:load', function () {
   $(document).on('nested:fieldRemoved', function (e) {
     setFieldNum();
     checkFieldNum();
+    doValidation();
 
     var $link = $(e.target).siblings('a.add_nested_fields');
 
     if (!$link.data('limit')) {
       return;
     }
+
     if (getFormFieldLength() < $link.data('limit')) {
       $link.show();
     }
+
     if (getFormFieldLength() == 1) {
       $('.remove-link').hide();
     }
