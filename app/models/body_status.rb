@@ -27,11 +27,11 @@ class BodyStatus < ApplicationRecord
     exercise_part
   end
 
-  scope :get_body_weight_records, -> (current_user_id) do
-    where(user_id: current_user_id).pluck(:created_at, :body_weight)
+  scope :get_body_weight_records, -> (current_user, range) do
+    where(user_id: current_user.id).where(created_at: range).pluck(:created_at, :body_weight)
   end
 
-  scope :get_body_fat_records, -> (current_user_id) do
-    where(user_id: current_user_id).pluck(:created_at, :body_fat)
+  scope :get_body_fat_records, -> (current_user, range) do
+    where(user_id: current_user.id).where(created_at: range).pluck(:created_at, :body_fat)
   end
 end
