@@ -38,4 +38,6 @@
       </div><!-- /.menu -->
     <% end %><!-- /@menus.each do |menu| -->
   </div><!-- /.menuWrapper -->
+
+  <%= render 'partial/pie_chart_content.html.erb' if current_user.workouts.present? %>
 </div><!-- /.main-container mx-auto -->

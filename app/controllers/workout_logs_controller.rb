@@ -3,11 +3,13 @@ class WorkoutLogsController < ApplicationController
 
   def index
     @workout_logs = @user.workouts.order(created_at: :desc).page(params[:page])
+    set_part_name_chart(@user)
   end
 
   def search
     search_params = workout_logs_search_params
     @workout_logs = Workout.search_workout(search_params).page(params[:page])
+    set_part_name_chart(@user)
     render :index
   end
 
