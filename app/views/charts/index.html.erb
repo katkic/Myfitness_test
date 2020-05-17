@@ -2,15 +2,19 @@
   <h1 class="page-title mb-4">グラフ</h1>
   <h2 class="page-title"><%= select_range_title(@range_title) %></h2>
 
-  <div class="mt-3">
-    <h2>体重</h2>
-    <%= line_chart @body_weight_records %>
-  </div>
+  <% if current_user.body_statuses.present? %>
+    <div class="mt-3">
+      <h2>体重</h2>
+      <%= line_chart @body_weight_records, curve: false, height: '280px' %>
+    </div>
 
-  <div class="mt-3">
-    <h2>体脂肪</h2>
-    <%= line_chart @body_fat_records, colors: ['#b00'] %>
-  </div>
+    <div class="mt-3">
+      <h2>体脂肪</h2>
+      <%= line_chart @body_fat_records, colors: ['#b00'], curve: false, height: '280px' %>
+    </div>
+  <% else %>
+    <p>記録がありません</p>
+  <% end %>
 
   <%= render 'partial/chart_nav' %>
 </div><!-- /.container -->
