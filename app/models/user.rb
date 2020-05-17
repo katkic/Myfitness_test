@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :profiles, dependent: :destroy
   has_many :menus, dependent: :destroy
   has_many :workouts, dependent: :destroy
+  has_many :workout_exercises, through: :workouts, source: :exercise
   has_many :body_statuses, dependent: :destroy
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy

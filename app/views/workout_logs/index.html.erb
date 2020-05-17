@@ -46,4 +46,6 @@
     <%= paginate(@workout_logs) %>
     <%= page_entries_info(@workout_logs) %>
   </div>
+
+  <%= render 'partial/pie_chart_content.html.erb' if @user.workouts.present? %>
 </div><!-- /.workout_logs-container -->

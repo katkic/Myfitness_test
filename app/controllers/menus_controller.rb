@@ -4,6 +4,7 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.where(user: current_user)
+    set_part_name_chart(current_user)
   end
 
   def show;end
