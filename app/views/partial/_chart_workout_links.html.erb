@@ -1,0 +1,7 @@
+<nav>
+  <ul class="exercise-chart-nav mt-4">
+    <% @workouts.each do |workout| %>
+      <li><%= link_to workout.exercise.name, charts_path({ id: workout.exercise_id, range: 'all'}), class: 'text-white' %></li>
+    <% end %>
+  </ul>
+</nav>

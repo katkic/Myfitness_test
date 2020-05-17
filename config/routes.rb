@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :menus
   resources :workouts
   resources :body_statuses
-  resources :charts, only: [:index]
-  resources :calendars, only: [:show]
+  resources :charts, only: :index
+  resources :calendars, only: :show
   resources :relationships, only: %i[index create destroy]
 
   resources :posts do

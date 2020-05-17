@@ -1,0 +1,18 @@
+<% if current_user.workouts.present? %>
+  <div class="mt-3">
+    <h2>最大重量</h2>
+    <%= line_chart max_weight_records, curve: false, height: '280px' %>
+  </div>
+
+  <div class="mt-3">
+    <h2>1RM</h2>
+    <%= line_chart max_one_rm_records, colors: ['#b00'], curve: false, height: '280px' %>
+  </div>
+
+  <div class="mt-3">
+    <h2>合計重量</h2>
+    <%= line_chart total_weight_records, colors: ['#fa3'], curve: false, height: '280px' %>
+  </div>
+<% else %>
+  <p>記録がありません</p>
+<% end %>
