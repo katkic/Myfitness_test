@@ -5,10 +5,10 @@
 
   <div class="post-icons">
     <div class="post-item">
-      <%= link_to "#{@post.like_users.count}件のいいね", likes_path(id: @post.id) if @post.like_users.count > 0 %>
+      <%= link_to "#{@post.like_users.count}件のいいね", likes_path(id: @post.id) if @post.like_users.count >= 0 %>
     </div><!-- /.post-item -->
     <div class="post-item">
-      <%= link_to "#{@post.comment_users.count}件のコメント", [@post, :comments] if @post.comment_users.count > 0 %>
+      <%= link_to "#{@post.comment_users.count}件のコメント", [@post, :comments] if @post.comment_users.count >= 0 %>
     </div><!-- /.post-item -->
   </div><!-- /.post-icons -->
 
