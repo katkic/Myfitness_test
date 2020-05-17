@@ -13,22 +13,52 @@ class Workout < ApplicationRecord
     very_bad:  5
   }
 
-  paginates_per 5
+  paginates_per 20
 
-  def self.get_set(exercise_logs)
+  # max_weight, max_one_rm, total_weightの計算&カラムにセット
+  before_validation :calculate_weight
+
+  scope :search_workout, -> (search_params) do
+    if search_params[:name].blank?
+      order(created_at: :desc)
+    else
+      exercise = Exercise.find_by(name: search_params[:name])
+      where(exercise_id: exercise.id).order(created_at: :desc)
+    end
+  end
+
+  scope :get_workout_records, -> (current_user, exercise_id, range, column) do
+    find_workout(current_user, exercise_id, range).pluck(:created_at, column)
+  end
+
+  scope :find_workout, -> (current_user, exercise_id, range) do
+    current_user.workouts.where(exercise_id: exercise_id).where(created_at: range)
+  end
+
+  private
+
+  def calculate_weight
+    exercise_logs = self.exercise_logs
+    self.set = get_set(exercise_logs)
+    self.max_weight = get_max_weight(exercise_logs)
+    self.max_one_rm = get_max_one_rm(exercise_logs)
+    self.total_weight = get_total_weight(exercise_logs)
+  end
+
+  def get_set(exercise_logs)
     return 0 if exercise_logs.empty?
 
     exercise_logs.last.set
   end
 
-  def self.get_max_weight(exercise_logs)
+  def get_max_weight(exercise_logs)
     return 0 if exercise_logs.empty?
 
     weight_arr = exercise_logs.map { |exercise_log| exercise_log[:weight] }
     weight_arr.max
   end
 
-  def self.get_one_rm_max(exercise_logs)
+  def get_max_one_rm(exercise_logs)
     return 0 if exercise_logs.empty?
 
     one_rm_max_arr = exercise_logs.map do |exercise_log|
@@ -38,13 +68,7 @@ class Workout < ApplicationRecord
     one_rm_max_arr.max
   end
 
-  def self.get_one_rm(exercise_log)
-    return 0 unless exercise_log.present?
-
-    once_or_more(exercise_log)
-  end
-
-  def self.get_total_weight(exercise_logs)
+  def get_total_weight(exercise_logs)
     return 0 if exercise_logs.empty?
 
     sum = 0
@@ -52,7 +76,7 @@ class Workout < ApplicationRecord
     sum
   end
 
-  def self.once_or_more(exercise_logs)
+  def once_or_more(exercise_logs)
     if exercise_logs[:rep] == 1
       exercise_logs[:weight]
     else
@@ -60,7 +84,7 @@ class Workout < ApplicationRecord
     end
   end
 
-  def self.choose_bench_or_squat(exercise_log)
+  def choose_bench_or_squat(exercise_log)
     # 1RM = 使用重量 × {1 + (持ち上げた回数 ÷ 40)}
     # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
     exercise_name = exercise_log.workout.exercise.name
@@ -72,16 +96,4 @@ class Workout < ApplicationRecord
       (exercise_log[:weight] * (1 + (exercise_log[:rep] / 40.0))).floor(1)
     end
   end
-
-  private_class_method :choose_bench_or_squat, :once_or_more
-
-  scope :search_workout, -> (search_params) do
-    if search_params[:name].blank?
-      order(created_at: :desc)
-    else
-      exercise = Exercise.find_by(name: search_params[:name])
-      where(exercise_id: exercise.id).order(created_at: :desc)
-    end
-  end
-
 end
