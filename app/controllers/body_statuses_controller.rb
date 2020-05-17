@@ -3,7 +3,7 @@ class BodyStatusesController < ApplicationController
   before_action :set_height, only: %i[index show]
 
   def index
-    @body_statuses = BodyStatus.where(user_id: current_user.id).order(created_at: :desc)
+    @body_statuses = BodyStatus.where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
   end
 
   def show;end
