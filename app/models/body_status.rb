@@ -16,11 +16,11 @@ class BodyStatus < ApplicationRecord
     (weight / (height / 100) ** 2).floor
   end
 
-  scope :get_body_weight_records, -> (current_user, range) do
-    where(user_id: current_user.id).where(created_at: range).pluck(:created_at, :body_weight)
+  scope :get_body_status_records, -> (current_user, range, column) do
+    find_body_status(current_user, range).pluck(:created_at, column)
   end
 
-  scope :get_body_fat_records, -> (current_user, range) do
-    where(user_id: current_user.id).where(created_at: range).pluck(:created_at, :body_fat)
+  scope :find_body_status, -> (current_user, range) do
+    current_user.body_statuses.where(created_at: range)
   end
 end

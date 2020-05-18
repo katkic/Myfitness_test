@@ -13,67 +13,10 @@ class Workout < ApplicationRecord
     very_bad:  5
   }
 
-  paginates_per 5
+  paginates_per 20
 
-  def self.get_set(exercise_logs)
-    return 0 if exercise_logs.empty?
-
-    exercise_logs.last.set
-  end
-
-  def self.get_max_weight(exercise_logs)
-    return 0 if exercise_logs.empty?
-
-    weight_arr = exercise_logs.map { |exercise_log| exercise_log[:weight] }
-    weight_arr.max
-  end
-
-  def self.get_one_rm_max(exercise_logs)
-    return 0 if exercise_logs.empty?
-
-    one_rm_max_arr = exercise_logs.map do |exercise_log|
-      once_or_more(exercise_log)
-    end
-
-    one_rm_max_arr.max
-  end
-
-  def self.get_one_rm(exercise_log)
-    return 0 unless exercise_log.present?
-
-    once_or_more(exercise_log)
-  end
-
-  def self.get_total_weight(exercise_logs)
-    return 0 if exercise_logs.empty?
-
-    sum = 0
-    exercise_logs.each { |exercise_log| sum += exercise_log[:weight] * exercise_log[:rep] }
-    sum
-  end
-
-  def self.once_or_more(exercise_logs)
-    if exercise_logs[:rep] == 1
-      exercise_logs[:weight]
-    else
-      choose_bench_or_squat(exercise_logs)
-    end
-  end
-
-  def self.choose_bench_or_squat(exercise_log)
-    # 1RM = 使用重量 × {1 + (持ち上げた回数 ÷ 40)}
-    # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
-    exercise_name = exercise_log.workout.exercise.name
-
-    case exercise_name
-    when 'スクワット', 'デッドリフト'
-      (exercise_log[:weight] * (1 + (exercise_log[:rep] / 33.3))).floor(1)
-    else
-      (exercise_log[:weight] * (1 + (exercise_log[:rep] / 40.0))).floor(1)
-    end
-  end
-
-  private_class_method :choose_bench_or_squat, :once_or_more
+  # max_weight, max_one_rm, total_weightの計算&カラムにセット
+  before_validation :calculate_weight
 
   scope :search_workout, -> (search_params) do
     if search_params[:name].blank?
@@ -84,4 +27,83 @@ class Workout < ApplicationRecord
     end
   end
 
+  scope :get_workout_records, -> (user, exercise_id, range, column) do
+    find_workout(user, exercise_id, range).pluck(:created_at, column)
+  end
+
+  scope :find_workout, -> (user, exercise_id, range) do
+    user.workouts.where(exercise_id: exercise_id).where(created_at: range)
+  end
+
+  private
+
+  def calculate_weight
+    exercise_logs = self.exercise_logs
+    self.set = get_set(exercise_logs)
+    self.max_weight = get_max_weight(exercise_logs)
+    self.max_one_rm = get_max_one_rm(exercise_logs)
+    self.total_weight = get_total_weight(exercise_logs)
+  end
+
+  def get_set(exercise_logs)
+    return 0 if exercise_logs.empty?
+
+    exercise_logs.last.set
+  end
+
+  def get_max_weight(exercise_logs)
+    return 0 if exercise_logs.empty?
+
+    weight_arr = exercise_logs.map { |exercise_log| exercise_log[:weight] }
+    weight_arr.compact!
+    weight_arr.max
+  end
+
+  def get_max_one_rm(exercise_logs)
+    return 0 if exercise_logs.empty?
+
+    one_rm_max_arr = exercise_logs.map do |exercise_log|
+      once_or_more(exercise_log)
+    end
+
+    one_rm_max_arr.compact!
+    one_rm_max_arr.max
+  end
+
+  def get_total_weight(exercise_logs)
+    return 0 if exercise_logs.empty?
+
+    sum = 0
+    exercise_logs.each do |exercise_log|
+      if exercise_log[:weight].nil? || exercise_log[:rep].nil?
+        sum += 0
+      else
+        sum += exercise_log[:weight] * exercise_log[:rep]
+      end
+    end
+
+    sum
+  end
+
+  def once_or_more(exercise_logs)
+    if exercise_logs[:rep] == 1
+      exercise_logs[:weight]
+    else
+      choose_bench_or_squat(exercise_logs)
+    end
+  end
+
+  def choose_bench_or_squat(exercise_log)
+    # 1RM = 使用重量 × {1 + (持ち上げた回数 ÷ 40)}
+    # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
+    exercise_name = exercise_log.workout.exercise.name
+    return 0 if exercise_log[:weight].nil? || exercise_log[:rep].nil?
+
+    case exercise_name
+    when 'スクワット', 'デッドリフト'
+      (exercise_log[:weight] * (1 + (exercise_log[:rep] / 33.3))).floor(1)
+    else
+      (exercise_log[:weight] * (1 + (exercise_log[:rep] / 40.0))).floor(1)
+    end
+  end
 end
