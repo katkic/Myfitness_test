@@ -13,11 +13,11 @@ class ChartsController < ApplicationController
   private
 
   def set_workouts_link
-    current_user.workouts.select(:exercise_id).distinct
+    @user.workouts.select(:exercise_id).distinct
   end
 
   def find_exercise_name(exercise_id)
-    current_user.exercises.find(exercise_id).name
+    Exercise.find(exercise_id).name
   end
 
   def select_body_statuses_or_workouts
