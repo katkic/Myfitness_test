@@ -1,10 +1,11 @@
 <div class="container mt-4">
-  <% if @exercise_id == 0 %>
-    <h1 class="page-title mb-4">グラフ</h1>
+  <% if @exercise_id == '0' %>
+    <h2 class="page-title">体重・体脂肪</h2>
   <% else %>
     <h1 class="page-title mb-4"><%= @exercise_name %></h1>
   <% end %>
 
+  <p class="calendar_name mb-4"><%= @user.name %></p>
   <h2 class="page-title"><%= select_range_title(@range_title) %></h2>
 
   <% if @exercise_id == '0' %>
@@ -14,8 +15,8 @@
   <% end %>
 
   <!-- 表示期間のリンク -->
-  <%= render 'partial/chart_nav' %>
+  <%= render 'partial/chart_nav', user_id: @user.id %>
 
   <!-- 種目のグラフへのリンク -->
-  <%= render 'partial/chart_workout_links', workouts: @workouts %>
+  <%= render 'partial/chart_workout_links', workouts: @workouts, user_id: @user.id %>
 </div><!-- /.container -->

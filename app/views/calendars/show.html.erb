@@ -2,9 +2,9 @@
   <h1 class="page-title">カレンダー</h1>
 
   <% if controller.controller_name == 'menus'%>
-    <p class="calendar_name"><%= current_user.name %>の記録</p>
+    <p class="calendar_name"><%= current_user.name %></p>
   <% else %>
-    <p class="calendar_name"><%= @user.name %>の記録</p>
+    <p class="calendar_name"><%= @user.name %></p>
   <% end %>
 
   <div class="mt-3">
