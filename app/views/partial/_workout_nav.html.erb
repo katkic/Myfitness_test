@@ -1,7 +1,7 @@
 <nav>
   <ul class="content-nav">
     <li><%= link_to '戻る', workouts_path(id: @exercise.id), class: 'btn btn-outline-secondary' %></li>
-    <li><%= link_to content_tag(:i, '', class: 'fas fa-chart-line fa-2x ml-4 footer-icon'), charts_path({ id: @exercise.id, range: 'all' }) %></li>
+    <li><%= link_to content_tag(:i, '', class: 'fas fa-chart-line fa-2x ml-4 footer-icon'), charts_path({ id: @exercise.id, range: 'all', user_id: user_id }) %></li>
     <li><%= link_to 'メニュー', menus_path, class: 'btn btn-outline-secondary' %></li>
   </ul>
 </nav>

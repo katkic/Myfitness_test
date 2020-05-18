@@ -27,12 +27,12 @@ class Workout < ApplicationRecord
     end
   end
 
-  scope :get_workout_records, -> (current_user, exercise_id, range, column) do
-    find_workout(current_user, exercise_id, range).pluck(:created_at, column)
+  scope :get_workout_records, -> (user, exercise_id, range, column) do
+    find_workout(user, exercise_id, range).pluck(:created_at, column)
   end
 
-  scope :find_workout, -> (current_user, exercise_id, range) do
-    current_user.workouts.where(exercise_id: exercise_id).where(created_at: range)
+  scope :find_workout, -> (user, exercise_id, range) do
+    user.workouts.where(exercise_id: exercise_id).where(created_at: range)
   end
 
   private

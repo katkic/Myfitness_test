@@ -8,6 +8,7 @@ class WorkoutsController < ApplicationController
 
   def show
     @exercise_logs = @workout.exercise_logs.order(set: :asc)
+    @user = @workout.user
   end
 
   def new

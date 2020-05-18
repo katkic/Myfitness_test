@@ -3,6 +3,7 @@ class ChartsController < ApplicationController
     @range = Chart.get_range(params[:range])  # グラフの表示期間を取得
     @range_title = params[:range]
     @exercise_id = params[:id]
+    @user = User.find(params[:user_id])
     # 種目のグラフを表示するためのリンク用
     @workouts = set_workouts_link
 
@@ -30,8 +31,8 @@ class ChartsController < ApplicationController
   end
 
   def select_workout_chart
-    @max_weight_records = Workout.get_workout_records(current_user, @exercise_id, @range, :max_weight)
-    @max_one_rm_records = Workout.get_workout_records(current_user, @exercise_id, @range, :max_one_rm)
-    @total_weight_records = Workout.get_workout_records(current_user, @exercise_id, @range, :total_weight)
+    @max_weight_records = Workout.get_workout_records(@user, @exercise_id, @range, :max_weight)
+    @max_one_rm_records = Workout.get_workout_records(@user, @exercise_id, @range, :max_one_rm)
+    @total_weight_records = Workout.get_workout_records(@user, @exercise_id, @range, :total_weight)
   end
 end
