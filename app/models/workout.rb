@@ -55,6 +55,7 @@ class Workout < ApplicationRecord
     return 0 if exercise_logs.empty?
 
     weight_arr = exercise_logs.map { |exercise_log| exercise_log[:weight] }
+    weight_arr.compact!
     weight_arr.max
   end
 
@@ -65,6 +66,7 @@ class Workout < ApplicationRecord
       once_or_more(exercise_log)
     end
 
+    one_rm_max_arr.compact!
     one_rm_max_arr.max
   end
 
@@ -72,7 +74,14 @@ class Workout < ApplicationRecord
     return 0 if exercise_logs.empty?
 
     sum = 0
-    exercise_logs.each { |exercise_log| sum += exercise_log[:weight] * exercise_log[:rep] }
+    exercise_logs.each do |exercise_log|
+      if exercise_log[:weight].nil? || exercise_log[:rep].nil?
+        sum += 0
+      else
+        sum += exercise_log[:weight] * exercise_log[:rep]
+      end
+    end
+
     sum
   end
 
@@ -88,6 +97,7 @@ class Workout < ApplicationRecord
     # 1RM = 使用重量 × {1 + (持ち上げた回数 ÷ 40)}
     # スクワット・デッドリフトのRM換算表を作りたい場合は補正係数を33.3にする
     exercise_name = exercise_log.workout.exercise.name
+    return 0 if exercise_log[:weight].nil? || exercise_log[:rep].nil?
 
     case exercise_name
     when 'スクワット', 'デッドリフト'
